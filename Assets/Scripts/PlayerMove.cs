@@ -1,0 +1,51 @@
+using UnityEngine;
+using System.Collections;
+
+public class PlayerMove : MonoBehaviour
+{
+    public float HP;
+    public Rigidbody2D rigid;
+    public bool CanDash = true;
+    
+    void Awake(){
+        HP = GameManager.Instance.playerHP;
+        CanDash = true;
+        rigid = GetComponent<Rigidbody2D>();
+    }
+
+    void Update(){
+        if(Input.GetKey(KeyCode.Space) && CanDash){
+            StartCoroutine(Dash());
+            Debug.Log("dash~");
+        }
+    }
+
+    void FixedUpdate(){
+        if(CanDash){
+            move();
+        }
+        
+        
+    }
+
+    void move(){
+        rigid.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * GameManager.Instance.PlayerSpeed, 0);
+    }
+
+    IEnumerator Dash(){
+        CanDash = false;
+        Vector2 dir = Vector2.zero;
+        if(Input.GetKey(KeyCode.RightArrow)){
+            rigid.AddForce(Vector2.right * 10, ForceMode2D.Impulse);
+        }
+        else if(Input.GetKey(KeyCode.LeftArrow)){
+            rigid.AddForce(Vector2.left * 10, ForceMode2D.Impulse);
+        }
+        else{
+            rigid.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+
+        }
+        yield return new WaitForSeconds(1f);
+        CanDash = true;
+    }
+}

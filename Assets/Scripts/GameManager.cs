@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     static public GameManager Instance;
     
     public GameObject boss;
+    public GameObject player;
     
 
     [Header("# Player")]
@@ -12,7 +13,8 @@ public class GameManager : MonoBehaviour
     public float playerMaxHP = 10;
     public float playerATK;
     public float PP;  //parrying point
-    public GameObject player;
+    public float PlayerSpeed;
+    public bool CanDash;
 
     public bool playerDie;
 
