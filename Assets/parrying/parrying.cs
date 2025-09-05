@@ -2,14 +2,18 @@ using UnityEngine;
 
 public class ParrySystem : MonoBehaviour
 {
-    private bool canParry = true;           // 패링 가능 여부 (쿨다운 여부)
-    private bool parryWindowActive = false; // 패링 윈도우 활성화 여부
+
     private float parryCooldown = 5f;       // 쿨다운 시간
-    private float cooldownTimer = 0f;
+    private float parryWindowDuration = 0.25f; // 패링 윈도우 지속 시간 (0.25초)
 
-    private float parryWindowDuration = 0.3f; // 패링 윈도우 지속 시간 (0.3초)
-    private float parryWindowTimer = 0f;
-
+    void awake()
+    {
+        // 초기화
+        canParry = true;
+        parryWindowActive = false;
+        cooldownTimer = 0f;
+        parryWindowTimer = 0f;
+    }
     void Update()
     {
         HandleCooldown();
@@ -69,7 +73,7 @@ public class ParrySystem : MonoBehaviour
     /// 공격이 들어올 때 호출되는 함수
     /// (실제 전투 시스템에서 공격 타이밍 맞춰 호출 필요)
     /// </summary>
-    public void OnIncomingAttack(EnemyAttack attack)
+    public void OnCollision2D(EnemyAttack attack)
     {
         if (parryWindowActive && attack.canBeParried)
         {
@@ -107,12 +111,3 @@ public class ParrySystem : MonoBehaviour
 /// <summary>
 /// 공격 객체 예시
 /// </summary>
-public class EnemyAttack
-{
-    public bool canBeParried;
-
-    public void CancelAttack()
-    {
-        Debug.Log("Attack was cancelled due to parry!");
-    }
-}
