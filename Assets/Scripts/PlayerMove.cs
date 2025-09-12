@@ -30,7 +30,8 @@ public class PlayerMove : MonoBehaviour
     }
 
     void move(){
-        rigid.AddForce(Vector2.right * Input.GetAxis("Horizontal") * GameManager.Instance.PlayerSpeed, ForceMode2D.Impulse);
+        transform.Translate(new Vector2(Input.GetAxisRaw("Horizontal"), 0));
+        //rigid.AddForce(Vector2.right * Input.GetAxis("Horizontal") * GameManager.Instance.PlayerSpeed, ForceMode2D.Impulse);
     }
 
     IEnumerator Dash(){
