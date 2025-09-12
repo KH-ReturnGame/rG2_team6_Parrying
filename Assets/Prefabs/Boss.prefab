@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6977807262787510885}
   - component: {fileID: 8865623265931517124}
+  - component: {fileID: 4805352435865977903}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -26,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 8879183897708159949}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.68, y: 4.18, z: 0}
-  m_LocalScale: {x: 4.820448, y: 5.0182996, z: 1}
+  m_LocalPosition: {x: 11.9788, y: 5.0305, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,3 +88,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4805352435865977903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879183897708159949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20d37d375f0b7f94a9ffe6ba67379470, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tentacle: {fileID: 8842658588646160858, guid: 1a7920170b6b87e4d92a5e392f3b0f37, type: 3}

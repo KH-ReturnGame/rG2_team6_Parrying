@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
+
 {
     static public GameManager Instance;
 
@@ -28,8 +29,14 @@ public class GameManager : MonoBehaviour
     [Header("# Others")]
     public float GameTime;
 
+    [Header("# bossSkill")] 
+    public int skill;
+    public int skillnum;
+    public int phase1 = 3;
+    public int phase2 = 3;
 
     void Awake(){
         Instance = this;
     }
+    
 }

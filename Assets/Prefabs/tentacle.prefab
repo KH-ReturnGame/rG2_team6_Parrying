@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6182647145483437839}
   - component: {fileID: 2274385507698005712}
   m_Layer: 0
-  m_Name: Triangle
+  m_Name: tentacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8842658588646160858}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.52, y: 5.0892, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7052588, w: 0.70895004}
+  m_LocalPosition: {x: 10.022608, y: 10.563178, z: 0}
   m_LocalScale: {x: 1.9981737, y: 26.03791, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 89.701}
 --- !u!212 &2274385507698005712
 SpriteRenderer:
   m_ObjectHideFlags: 0
