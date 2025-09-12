@@ -7,10 +7,11 @@ public class PlayerMove : MonoBehaviour
     public Rigidbody2D rigid;
     public bool CanDash = true;
     
-    void Awake(){
-        HP = GameManager.Instance.playerHP;
+    void Start(){
+        
         CanDash = true;
         rigid = GetComponent<Rigidbody2D>();
+        HP = GameManager.Instance.playerHP;
     }
 
     void Update(){
@@ -29,7 +30,7 @@ public class PlayerMove : MonoBehaviour
     }
 
     void move(){
-        rigid.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * GameManager.Instance.PlayerSpeed, 0);
+        rigid.AddForce(Vector2.right * Input.GetAxis("Horizontal") * GameManager.Instance.PlayerSpeed, ForceMode2D.Impulse);
     }
 
     IEnumerator Dash(){
