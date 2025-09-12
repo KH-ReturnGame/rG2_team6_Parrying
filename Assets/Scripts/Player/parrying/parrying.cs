@@ -3,12 +3,17 @@ using UnityEngine;
 public class ParrySystem : MonoBehaviour
 {
 
-    private float parryCooldown = 5f;       // Äð´Ù¿î ½Ã°£
-    private float parryWindowDuration = 0.25f; // ÆÐ¸µ À©µµ¿ì Áö¼Ó ½Ã°£ (0.25ÃÊ)
+    private float parryCooldown = 5f;       // ï¿½ï¿½Ù¿ï¿½ ï¿½Ã°ï¿½
+    private float parryWindowDuration = 0.25f; // ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ (0.25ï¿½ï¿½)
+
+    public bool canParry;
+    public bool parryWindowActive;
+    public float cooldownTimer;
+    public float parryWindowTimer;
 
     void awake()
     {
-        // ÃÊ±âÈ­
+        // ï¿½Ê±ï¿½È­
         canParry = true;
         parryWindowActive = false;
         cooldownTimer = 0f;
@@ -19,7 +24,7 @@ public class ParrySystem : MonoBehaviour
         HandleCooldown();
         HandleParryWindow();
 
-        // ÆÐ¸µ ÀÔ·Â
+        // ï¿½Ð¸ï¿½ ï¿½Ô·ï¿½
         if (Input.GetKeyDown(KeyCode.LeftShift) && canParry)
         {
             StartParryWindow();
@@ -27,7 +32,7 @@ public class ParrySystem : MonoBehaviour
     }
 
     /// <summary>
-    /// Äð´Ù¿î °ü¸®
+    /// ï¿½ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     private void HandleCooldown()
     {
@@ -43,7 +48,7 @@ public class ParrySystem : MonoBehaviour
     }
 
     /// <summary>
-    /// ÆÐ¸µ À©µµ¿ì °ü¸®
+    /// ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     private void HandleParryWindow()
     {
@@ -51,7 +56,7 @@ public class ParrySystem : MonoBehaviour
         {
             parryWindowTimer -= Time.deltaTime;
 
-            // À©µµ¿ì ³¡³ª¸é ÀÚµ¿ ½ÇÆÐ Ã³¸®
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
             if (parryWindowTimer <= 0f)
             {
                 EndParryWindow(false);
@@ -60,7 +65,7 @@ public class ParrySystem : MonoBehaviour
     }
 
     /// <summary>
-    /// ÆÐ¸µ ½Ãµµ ½ÃÀÛ ¡æ ÂªÀº ½Ã°£¸¸ ÆÐ¸µ °¡´É
+    /// ï¿½Ð¸ï¿½ ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Âªï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     private void StartParryWindow()
     {
@@ -70,25 +75,25 @@ public class ParrySystem : MonoBehaviour
     }
 
     /// <summary>
-    /// °ø°ÝÀÌ µé¾î¿Ã ¶§ È£ÃâµÇ´Â ÇÔ¼ö
-    /// (½ÇÁ¦ ÀüÅõ ½Ã½ºÅÛ¿¡¼­ °ø°Ý Å¸ÀÌ¹Ö ¸ÂÃç È£Ãâ ÇÊ¿ä)
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½Ç´ï¿½ ï¿½Ô¼ï¿½
+    /// (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã½ï¿½ï¿½Û¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ ï¿½Ê¿ï¿½)
     /// </summary>
     public void OnCollision2D(EnemyAttack attack)
     {
         if (parryWindowActive && attack.canBeParried)
         {
-            // ¼º°ø
+            // ï¿½ï¿½ï¿½ï¿½
             EndParryWindow(true, attack);
         }
         else
         {
-            // ½ÇÆÐ
+            // ï¿½ï¿½ï¿½ï¿½
             EndParryWindow(false);
         }
     }
 
     /// <summary>
-    /// ÆÐ¸µ À©µµ¿ì Á¾·á
+    /// ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     private void EndParryWindow(bool success, EnemyAttack attack = null)
     {
@@ -109,5 +114,5 @@ public class ParrySystem : MonoBehaviour
 }
 
 /// <summary>
-/// °ø°Ý °´Ã¼ ¿¹½Ã
+/// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 /// </summary>
