@@ -6,6 +6,7 @@ public class Boss : MonoBehaviour
 {
     private bool phase2Start = false;
     public GameObject tentacle;
+    public GameObject verticle_tentacle; //1111
     public int skillnum;
 
     void Start()
@@ -37,10 +38,14 @@ public class Boss : MonoBehaviour
         GameManager.Instance.skill = Random.Range(0, GameManager.Instance.skillnum - 1);
         switch (GameManager.Instance.skill)
         {
-            case 0: // 촉수 소환
-                Instantiate(tentacle, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 90));
+            case 0: // tentacle summon
+                Instantiate(tentacle, transform.position + new Vector3(-7, -9, 0), Quaternion.Euler(0, 0, 90));
                 break;
 
+
+            case 1: // vertical tentacle summon
+                instantiate(verticle_tentacle, GameManager.Instance.player.transform.position , Quaternion.Euler(0, 0, 0));
+                break;
 
         }
 
