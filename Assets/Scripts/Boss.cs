@@ -38,7 +38,7 @@ public class Boss : MonoBehaviour
         switch (GameManager.Instance.skill)
         {
             case 0: // 촉수 소환
-                Instantiate(tentacle, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 90));
+                Instantiate(tentacle, transform.position - new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 90));
                 break;
 
 
