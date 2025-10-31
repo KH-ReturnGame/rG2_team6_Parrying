@@ -1,13 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
+
 public class Boss : MonoBehaviour
 
 {
     private bool phase2Start = false;
     public GameObject tentacle;
     public GameObject verticle_tentacle; //1111
-    public int skillnum;
+    public GameObject Egg;
+    public Collider2D All_attack;
 
     void Start()
     {
@@ -22,6 +24,9 @@ public class Boss : MonoBehaviour
             if (GameManager.Instance.bossHP <= 60)
             {
                 phase2Start = true;
+                GameManager.Instance.skillnum = 7;
+                StartCoroutine(Skill_4_wait());
+
             }
 
         }
@@ -44,13 +49,34 @@ public class Boss : MonoBehaviour
 
 
             case 1: // vertical tentacle summon
-                instantiate(verticle_tentacle, GameManager.Instance.player.transform.position , Quaternion.Euler(0, 0, 0));
+                Instantiate(verticle_tentacle, GameManager.Instance.player.transform.position , Quaternion.Euler(0, 0, 0));
                 break;
 
+            case 2: // Egg summon
+                for (int i = 0; i < 4; i++)
+            {   
+                Instantiate(Egg,
+                    new Vector3(Random.Range(transform.position.x, -11),
+                        GameManager.Instance.player.transform.position.y, 0), Quaternion.Euler(0, 0, 0));
+               
+            } break;
+            
+            case 3: // All_attack
+                StartCoroutine(Skill_4_wait());
+                break;
         }
 
 
         yield return new WaitForSeconds(2);
         StartCoroutine(Bossfight());
     }
+
+    IEnumerator Skill_4_wait()
+    {
+        
+        yield return new WaitForSeconds(4);
+        All_attack.enabled = true;
+    }
+    
+    
 }

@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public int skillnum;
     public int phase1 = 3;
     public int phase2 = 3;
+    
 
     void Awake(){
         Instance = this;
