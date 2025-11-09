@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6182647145483437839}
   - component: {fileID: 2274385507698005712}
   - component: {fileID: 6582356397098633390}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: tentacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

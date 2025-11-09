@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 126999155}
   - component: {fileID: 126999154}
   - component: {fileID: 126999153}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: boss_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 919148013}
   - component: {fileID: 919148012}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: All_attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,9 +451,9 @@ GameObject:
   - component: {fileID: 1006060771}
   - component: {fileID: 1006060770}
   - component: {fileID: 1006060769}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -510,7 +510,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5118129, y: 0.48346248}
     oldSize: {x: 1.09375, y: 1.5625}
     newSize: {x: 0.35, y: 0.5}
     adaptiveTilingThreshold: 0.5
@@ -562,7 +562,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1006060772
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -627,7 +627,7 @@ Transform:
   m_GameObject: {fileID: 1006060768}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08, y: -2.52, z: 0}
+  m_LocalPosition: {x: 0.08, y: -3.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3414,13 +3414,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 126999152}
-  playerHP: 0
-  playerMaxHP: 10
+  playerHP: 100
+  playerMaxHP: 100
   playerATK: 0
   PP: 0
   player: {fileID: 1006060768}
   playerDie: 0
-  bossHP: 0
+  bossHP: 120
   bossMaxHP: 120
   bossATK: 0
   bossHP2: 60

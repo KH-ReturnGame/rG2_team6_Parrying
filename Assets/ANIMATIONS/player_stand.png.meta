@@ -120,8 +120,8 @@ TextureImporter:
         y: 0
         width: 35
         height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5118129, y: 0.48346248}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -134,11 +134,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: player_stand_1
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 36
+        width: 6
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afdbda352cde1e34d83e801bb098accf
+      internalID: -1050813806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2091dce298811eb4ea352f7a2901c647
     internalID: 0
     vertices: []
     indices: 
@@ -149,6 +171,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       player_stand_0: 5426992086352664609
+      player_stand_1: -1050813806
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

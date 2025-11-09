@@ -41,22 +41,22 @@ public class Boss : MonoBehaviour
 
     IEnumerator Bossfight()
     {
-        GameManager.Instance.skill = Random.Range(0, GameManager.Instance.skillnum - 1);
+       
         switch (GameManager.Instance.skill)
         {
             case 0: // tentacle summon
-                skill_0();
+                tentacle_skill(true);
                 break;
 
 
             case 1: // vertical tentacle summon
-                skill_1(1);
+                vertical_tentacle_skill(1);
                 break;
 
             case 2: // Egg summon
                 for (int i = 0; i < 4; i++)
                 {
-                    skill_2(0);
+                    Egg_skill(0);
                 }
 
                 break;
@@ -66,33 +66,68 @@ public class Boss : MonoBehaviour
                 break;
 
             case 4: // Egg_vertical
-                skill_1(5);
-                skill_2(20);
+                vertical_tentacle_skill(5);
+                for (int i = 0; i < 6; i++) {
+                    Egg_skill(20);
+                }
+                break;
+                   
+
+
+            case 5: // vertical_tentacle * 4, tentacle_skill * 1
             {
-                
-            }
+                for (int i = 0; i < 4; i++)
+                {
+                    vertical_tentacle_skill(1);
+                    StartCoroutine(Delay(0.5f));
+                    }
+                tentacle_skill(true);
+                    break;
+
+
+
+
+
+                }
+                break;
+
+
+            case 6: // Reverse tentacle
+
+                tentacle_skill(false);
                 break;
         }
-        
-        
 
-        yield return new WaitForSeconds(2);
+
+        GameManager.Instance.skill = Random.Range(0, GameManager.Instance.skillnum - 1);
+        yield return new WaitForSeconds(4);
         StartCoroutine(Bossfight());
     }
 
-    void skill_0()
+    void tentacle_skill(bool a)
     {
-        Instantiate(tentacle, transform.position + new Vector3(-7, -9, 0), Quaternion.Euler(0, 0, 90));
+        if (a)
+        {
+         Instantiate(tentacle, transform.position + new Vector3(-7, -9, 0), Quaternion.Euler(0, 0, 90));
+
+            
+        }
+        else if(!a)
+        {
+            Instantiate(tentacle, transform.position + new Vector3(-26, -9, 0), Quaternion.Euler(0, 0, -90));
+        }
+       
+        
     }
 
-    void skill_1(float a)
+    void vertical_tentacle_skill(float a)
     { 
         verticle_tentacle.transform.localScale *= a;
         Instantiate(verticle_tentacle, GameManager.Instance.player.transform.position, Quaternion.Euler(0, 0, 0));
         verticle_tentacle.transform.localScale /= a;
     }
 
-    void skill_2(float a)
+    void Egg_skill(float a)
     {
         Instantiate(Egg,
             new Vector3(Random.Range(transform.position.x, -11),
@@ -109,5 +144,10 @@ IEnumerator Skill_4()
         All_attack.enabled = false;
     }
     
-    
+IEnumerator Delay(float time)
+    {
+        yield return new WaitForSeconds(time);
+    }
+
+
 }
