@@ -89,6 +89,7 @@ public class ParrySystem : MonoBehaviour
         {
             // ����
             EndParryWindow(false);
+            GameManager.Instance.playerHP -= attack.damage;
         }
     }
 
