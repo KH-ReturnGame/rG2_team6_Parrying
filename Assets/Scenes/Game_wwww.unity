@@ -153,6 +153,7 @@ MonoBehaviour:
   verticle_tentacle: {fileID: 6301519767057180010, guid: c591fbe006c53b54f925889c789899f4, type: 3}
   Egg: {fileID: 1794708268047322259, guid: d6932d691b2bfc54ab5affff7194b14c, type: 3}
   All_attack: {fileID: 919148012}
+  Ready_motion: {fileID: 0}
 --- !u!212 &126999154
 SpriteRenderer:
   m_ObjectHideFlags: 0
