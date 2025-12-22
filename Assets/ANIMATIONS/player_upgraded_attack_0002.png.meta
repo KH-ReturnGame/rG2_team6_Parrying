@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 935ed508660c6cc42a7f28f8a371fbe7
+guid: 2e2b385cfb0790f479cffd7b6c727dd0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4642695590089318220
-    second: boss_006_0
+      213: 274798862168653992
+    second: player_upgraded_attack_0002_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boss_006_0
+      name: player_upgraded_attack_0002_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 11
-        width: 183
-        height: 189
+        x: 45
+        y: 0
+        width: 37
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4b0247875f4d19fb0800000000000000
-      internalID: -4642695590089318220
+      spriteID: 8a08e34fb1840d300800000000000000
+      internalID: 274798862168653992
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      boss_006_0: -4642695590089318220
+      player_upgraded_attack_0002_0: 274798862168653992
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
