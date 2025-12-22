@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 0946a24d4d11a554fa102a8e5d066a27
+guid: 4d02ab595fc269c4f8e56c9166b8422b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3923555445206177427
-    second: player_walk_0002_0
+      213: 5024128300352272282
+    second: boss_ultimit_0002_0
+  - first:
+      213: -9181035732817888477
+    second: boss_ultimit_0002_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +99,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_walk_0002_0
+      name: boss_ultimit_0002_0
       rect:
         serializedVersion: 2
         x: 56
-        y: 1
-        width: 38
-        height: 58
+        y: 31
+        width: 288
+        height: 194
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d69afe74c1bbc89c0800000000000000
-      internalID: -3923555445206177427
+      spriteID: a97fb78f11a49b540800000000000000
+      internalID: 5024128300352272282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_ultimit_0002_1
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 3
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32bb83be4a8669080800000000000000
+      internalID: -9181035732817888477
       vertices: []
       indices: 
       edges: []
@@ -148,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      player_walk_0002_0: -3923555445206177427
+      boss_ultimit_0002_0: 5024128300352272282
+      boss_ultimit_0002_1: -9181035732817888477
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

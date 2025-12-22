@@ -10,6 +10,7 @@ public class Boss : MonoBehaviour
     public GameObject verticle_tentacle; //1111
     public GameObject Egg;
     public Collider2D All_attack;
+    public GameObject Ready_motion;
 
     void Start()
     {
@@ -50,7 +51,11 @@ public class Boss : MonoBehaviour
 
 
             case 1: // vertical tentacle summon
+                Ready_motion.SetActive(true);
+                StartCoroutine(Delay(1f));
                 vertical_tentacle_skill(1);
+               
+                
                 break;
 
             case 2: // Egg summon
