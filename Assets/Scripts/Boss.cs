@@ -6,6 +6,7 @@ public class Boss : MonoBehaviour
 
 {
     private bool phase2Start = false;
+    private bool isDoingPattern = false;
     public GameObject tentacle;
     public GameObject verticle_tentacle; //1111
     public GameObject Egg;
@@ -26,7 +27,7 @@ public class Boss : MonoBehaviour
             {
                 phase2Start = true;
                 GameManager.Instance.skillnum = 7;
-                StartCoroutine(Skill_4());
+                StartCoroutine(All_attack_on());
 
 
             }
@@ -42,8 +43,24 @@ public class Boss : MonoBehaviour
 
     IEnumerator Bossfight()
     {
-       
-        switch (GameManager.Instance.skill)
+        while (true)
+        {
+            if (!isDoingPattern)
+            {
+                isDoingPattern = true;
+                yield return StartCoroutine(DoPattern(GameManager.Instance.skill));
+                isDoingPattern = false;
+
+                GameManager.Instance.skill = Random.Range(0, GameManager.Instance.skillnum);
+            }
+
+            yield return new WaitForSeconds(4f);
+        }
+    }
+    
+    IEnumerator DoPattern(int skill) {
+
+    switch (GameManager.Instance.skill)
         {
             case 0: // tentacle summon
                 tentacle_skill(true);
@@ -53,7 +70,7 @@ public class Boss : MonoBehaviour
             case 1: // vertical tentacle summon
                 Ready_motion.SetActive(true);
                 StartCoroutine(Delay(1f));
-                vertical_tentacle_skill(1);
+                vertical_tentacle_skill(2f);
                
                 
                 break;
@@ -67,7 +84,7 @@ public class Boss : MonoBehaviour
                 break;
 
             case 3: // All_attack
-                StartCoroutine(Skill_4());
+                StartCoroutine(All_attack_on());
                 break;
 
             case 4: // Egg_vertical
@@ -84,15 +101,11 @@ public class Boss : MonoBehaviour
                 for (int i = 0; i < 4; i++)
                 {
                     vertical_tentacle_skill(1);
-                    StartCoroutine(Delay(0.5f));
-                    }
+                    StartCoroutine(Delay(1f)); }
+                    
                 tentacle_skill(true);
                     break;
-
-
-
-
-
+                    
                 }
                 break;
 
@@ -113,13 +126,13 @@ public class Boss : MonoBehaviour
     {
         if (a)
         {
-         Instantiate(tentacle, transform.position + new Vector3(-7, -9, 0), Quaternion.Euler(0, 0, 90));
+         Instantiate(tentacle, transform.position + new Vector3(-7, -10, 0), Quaternion.Euler(0, 0, 90));
 
             
         }
         else if(!a)
         {
-            Instantiate(tentacle, transform.position + new Vector3(-26, -9, 0), Quaternion.Euler(0, 0, -90));
+            Instantiate(tentacle, transform.position + new Vector3(-26, -10, 0), Quaternion.Euler(0, 0, -90));
         }
        
         
@@ -140,7 +153,7 @@ public class Boss : MonoBehaviour
 
     }
 
-IEnumerator Skill_4()
+IEnumerator All_attack_on()
     {
         
         yield return new WaitForSeconds(4);
