@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections;/*
+using System.Collections;
 
 
 public class PlayerAttack : MonoBehaviour
@@ -14,4 +14,5 @@ public class PlayerAttack : MonoBehaviour
     }
     [Header("입력")]
     public KeyCode attackKey = KeyCode.J;
-    public float comboBuffer = 0.2f; // 다음타 입력 버퍼*/
+    public float comboBuffer = 0.2f; // 다음타 입력 버퍼
+}
