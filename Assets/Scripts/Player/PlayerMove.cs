@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour
         
         CanDash = true;
         rigid = GetComponent<Rigidbody2D>();
-        HP = GameManager.Instance.playerHP;
+        HP = GameManager.Instance.playerHP = 100;
     }
 
     void Update(){
