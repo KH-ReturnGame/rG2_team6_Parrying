@@ -8,11 +8,14 @@ public class PlayerMove : MonoBehaviour
     public bool CanDash = true;
     public bool cannotmove = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
     public BossHPUI bossHPUI_2;
 =======
     public SpriteRenderer sprite;
     public Animator animator;
 >>>>>>> 7860a08b06d3e27280b744c9e0fc007842cfd109
+=======
+>>>>>>> parent of 8f94b9e (진짜로 ㄹㅇ)
     
     void Start(){
         
