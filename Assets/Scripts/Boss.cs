@@ -16,7 +16,7 @@ public class Boss : MonoBehaviour
     public GameObject tentacle;
     public GameObject verticle_tentacle; //1111
     public GameObject Egg;
-    public Collider2D All_attack;
+    public GameObject All_attack;
     public GameObject Ready_motion;
     public BossHPUI bossHPUI;
     private float lastHP = -1f;
@@ -209,9 +209,9 @@ IEnumerator All_attack_on()
     {
         
         yield return new WaitForSeconds(2);
-        All_attack.enabled = true;
+        All_attack.SetActive(true);
         yield return new WaitForSeconds(3);
-        All_attack.enabled = false;
+        All_attack.SetActive(false);
     }
 
 
