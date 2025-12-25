@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 21e1487bd8a231e4cba191f454a50173
+guid: 7f04ecf31fbec0a46932a3fa1e0b9cbd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8326308206747967685
-    second: player_move_0003_0
+      213: -1368371160812301621
+    second: boss_tentacle_2_0005_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_move_0003_0
+      name: boss_tentacle_2_0005_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 5
-        width: 49
-        height: 46
+        x: 334
+        y: 35
+        width: 66
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b3f1e56fcc2037c80800000000000000
-      internalID: -8326308206747967685
+      spriteID: bc2d4eedda1920de0800000000000000
+      internalID: -1368371160812301621
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      player_move_0003_0: -8326308206747967685
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
