@@ -6,6 +6,7 @@ public class PlayerMove : MonoBehaviour
     public float HP;
     public Rigidbody2D rigid;
     public bool CanDash = true;
+    public SpriteRenderer sprite;
 
     public Animator animator;
     
@@ -37,16 +38,18 @@ public class PlayerMove : MonoBehaviour
         //transform.Translate(new Vector2(Input.GetAxisRaw("Horizontal"), 0));
         //rigid.AddForce(Vector2.right * Input.GetAxis("Horizontal") * GameManager.Instance.PlayerSpeed, ForceMode2D.Impulse);
 
-        rigid.linearVelocityX = Input.GetAxisRaw("Horizontal") * 3f;
+        rigid.linearVelocityX = Input.GetAxisRaw("Horizontal") * 5f;
         
-        if(Input.GetKeyDown(KeyCode.RightArrow)){
-            animator.SetBool("IsWalking", true);
+        if(Input.GetKey(KeyCode.RightArrow)){
+            animator.SetBool("isWalking", true);
+            sprite.flipX = false;
         }
-        else if(Input.GetKeyDown(KeyCode.LeftArrow)){
-            animator.SetBool("IsWalking", true);
+        else if(Input.GetKey(KeyCode.LeftArrow)){
+            animator.SetBool("isWalking", true);
+            sprite.flipX = true;
         }
         else{
-            animator.SetBool("IsWalking", false);
+            animator.SetBool("isWalking", false);
         }
     }
 
