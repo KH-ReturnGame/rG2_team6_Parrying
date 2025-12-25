@@ -1704,7 +1704,10 @@ MonoBehaviour:
   cannotmove: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   bossHPUI_2: {fileID: 1237893666}
+=======
+>>>>>>> parent of 8f94b9e (진짜로 ㄹㅇ)
 =======
 >>>>>>> parent of 8f94b9e (진짜로 ㄹㅇ)
 --- !u!60 &1991405361
@@ -1765,6 +1768,7 @@ PolygonCollider2D:
       - {x: 0.65625, y: 0.21875}
   m_UseDelaunayMesh: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &2033454178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,6 +1823,8 @@ MonoBehaviour:
   sprite: {fileID: 1991405356}
   animator: {fileID: 1991405358}
 >>>>>>> 7860a08b06d3e27280b744c9e0fc007842cfd109
+=======
+>>>>>>> parent of 8f94b9e (진짜로 ㄹㅇ)
 =======
 >>>>>>> parent of 8f94b9e (진짜로 ㄹㅇ)
 --- !u!1 &2043216204
