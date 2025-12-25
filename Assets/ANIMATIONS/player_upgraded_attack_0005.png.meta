@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 075255c17835b25438dab8f2daf71c84
+guid: e9e9a9b88d3d8d5469e55946745b40d8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7661159643737769037
-    second: boss_007_0
+      213: 4832332261748276514
+    second: player_upgraded_attack_0005_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,40 +96,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boss_007_0
+      name: player_upgraded_attack_0005_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 11
-        width: 183
-        height: 189
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 47
+        y: 0
+        width: 44
+        height: 46
+      alignment: 9
+      pivot: {x: 0.3409091, y: 0.5217391}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3bbb37305e71ea590800000000000000
-      internalID: -7661159643737769037
+      spriteID: 22d7a2ad694ef0340800000000000000
+      internalID: 4832332261748276514
       vertices: []
       indices: 
       edges: []
@@ -138,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 91db8cfe683256f41884b012fd54bb59
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      boss_007_0: -7661159643737769037
+      player_upgraded_attack_0005_0: 4832332261748276514
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
