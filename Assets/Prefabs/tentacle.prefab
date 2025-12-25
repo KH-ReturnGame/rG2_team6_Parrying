@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6182647145483437839}
   - component: {fileID: 2274385507698005712}
   - component: {fileID: 6582356397098633390}
+  - component: {fileID: -7678305386785122927}
   m_Layer: 7
   m_Name: tentacle
   m_TagString: Untagged
@@ -100,3 +101,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 200e773f1182e5547870277e50870d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &-7678305386785122927
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8842658588646160858}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c29dc28d2b5a0ad40b579e20f07ee8ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

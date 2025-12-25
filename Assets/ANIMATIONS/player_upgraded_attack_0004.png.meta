@@ -96,19 +96,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -116,12 +103,12 @@ TextureImporter:
       name: player_upgraded_attack_0004_0
       rect:
         serializedVersion: 2
-        x: 49
+        x: 50
         y: 0
-        width: 43
-        height: 44
+        width: 42
+        height: 43
       alignment: 9
-      pivot: {x: 0.3255814, y: 0.54545456}
+      pivot: {x: 0.2857143, y: 0.55813956}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -138,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8147a9bd38ec3d74f88634d2a75d46e9
+    spriteID: 4c8cd2ebc650a2842b4ba5e73b806690
     internalID: 0
     vertices: []
     indices: 
