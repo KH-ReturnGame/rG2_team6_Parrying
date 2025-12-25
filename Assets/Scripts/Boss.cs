@@ -124,16 +124,10 @@ public class Boss : MonoBehaviour
 
     void tentacle_skill(bool a)
     {
-        if (a)
-        {
-         Instantiate(tentacle, transform.position + new Vector3(-7, -10, 0), Quaternion.Euler(0, 0, 90));
+         Instantiate(tentacle,new Vector3(10, 1.5f, 0), Quaternion.Euler(0, 0, 0));
 
             
-        }
-        else if(!a)
-        {
-            Instantiate(tentacle, transform.position + new Vector3(-26, -10, 0), Quaternion.Euler(0, 0, -90));
-        }
+        
        
         
     }
@@ -141,7 +135,7 @@ public class Boss : MonoBehaviour
     void vertical_tentacle_skill(float a)
     { 
         verticle_tentacle.transform.localScale *= a;
-        Instantiate(verticle_tentacle, GameManager.Instance.player.transform.position, Quaternion.Euler(0, 0, 0));
+        Instantiate(verticle_tentacle, GameManager.Instance.player.transform.position +  new Vector3(0, -1, 0), Quaternion.Euler(0, 0, 0));
         verticle_tentacle.transform.localScale /= a;
     }
 

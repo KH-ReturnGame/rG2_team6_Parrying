@@ -17,7 +17,7 @@ public class tentaqle : MonoBehaviour
 
     IEnumerator Bossfight()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }
 }
