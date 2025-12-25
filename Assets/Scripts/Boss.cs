@@ -5,10 +5,11 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 
 {
+    
+    private Coroutine bossLoop;
     private int lastSkill1 = -1; // 가장 최근
     private int lastSkill2 = -1;
     private int bossfightEnterCount = 0;
-    private Coroutine bossLoop;
     private int bossfightRunCount = 0;
     private bool phase2Start = false;
     private bool isDoingPattern = false;
@@ -17,12 +18,20 @@ public class Boss : MonoBehaviour
     public GameObject Egg;
     public Collider2D All_attack;
     public GameObject Ready_motion;
+    public BossHPUI bossHPUI;
+    private float lastHP = -1f;
+
     
 
-    void Start()
+    IEnumerator Start()
     {
         StartBossLoop();
+
+        yield return null; // 한 프레임 대기(초기화 순서 안정)
+        if (bossHPUI != null && GameManager.Instance != null)
+            bossHPUI.Init(GameManager.Instance.bossMaxHP);
     }
+
 
     private void StartBossLoop()
     {
@@ -35,8 +44,8 @@ public class Boss : MonoBehaviour
     void Update()
     {
         {
-            
-
+            if (bossHPUI == null || GameManager.Instance == null) return;
+            bossHPUI.SetHP(GameManager.Instance.bossHP);
         }
     }
 
