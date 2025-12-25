@@ -514,7 +514,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5118129, y: 0.48346248}
+    pivot: {x: 0.42857143, y: 0.48}
     oldSize: {x: 1.09375, y: 1.5625}
     newSize: {x: 0.35, y: 0.5}
     adaptiveTilingThreshold: 0.5
@@ -652,13 +652,14 @@ MonoBehaviour:
   reinforceKey: 113
   parryNeeded: 5
   currentParryCount: 0
-  reinforceReady: 0
+  reinforceReady: 1
   reinforceDamage: 10
   animator: {fileID: 0}
   reinforceAttackTrigger: ReinforceAttack
   OnReinforceAttack:
     m_PersistentCalls:
       m_Calls: []
+  accumulatedBlockedAttackPower: 0
 --- !u!114 &1006060775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,6 +673,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   code: {fileID: 0}
+  guardKey: 113
+  guardDamageMultiplier: 0.5
+  spriteRenderer: {fileID: 0}
 --- !u!114 &1006060776
 MonoBehaviour:
   m_ObjectHideFlags: 0

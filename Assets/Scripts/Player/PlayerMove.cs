@@ -43,10 +43,6 @@ public class PlayerMove : MonoBehaviour
         else if(Input.GetKey(KeyCode.LeftArrow)){
             rigid.AddForce(Vector2.left * 10, ForceMode2D.Impulse);
         }
-        else{
-            rigid.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
-
-        }
         yield return new WaitForSeconds(1f);
         CanDash = true;
     }

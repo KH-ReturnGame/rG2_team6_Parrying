@@ -8,17 +8,25 @@ public class ParrySystem : MonoBehaviour
     private float cooldownTimer = 0f;
     private float parryWindowDuration = 0.25f; // 패링 윈도우 지속 시간 (0.25초)
     private float parryWindowTimer = 0f;
+
     public PlayerReinforceAttack code;
 
-    void awake()
+    //가드(데미지 감소) 설정 
+    [Header("Guard (Q)")]
+    [SerializeField] private KeyCode guardKey = KeyCode.Q;
+    [Range(0f, 1f)]
+    [SerializeField] private float guardDamageMultiplier = 0.5f; // 50% 데미지
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
+    private void Awake()
     {
-        // 초기화
         canParry = true;
-        parryWindowActive = false;
+        parryWindowActive = false; // [수정] false;w -> false;
         cooldownTimer = 0f;
         parryWindowTimer = 0f;
     }
-    void Update()
+
+    private void Update()
     {
         HandleCooldown();
         HandleParryWindow();
@@ -30,9 +38,6 @@ public class ParrySystem : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 쿨다운 관리
-    /// </summary>
     private void HandleCooldown()
     {
         if (!canParry)
@@ -46,9 +51,6 @@ public class ParrySystem : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 패링 윈도우 관리
-    /// </summary>
     private void HandleParryWindow()
     {
         if (parryWindowActive)
@@ -63,9 +65,6 @@ public class ParrySystem : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 패링 시도 시작 -> 짧은 시간만 패링 가능
-    /// </summary>
     private void StartParryWindow()
     {
         parryWindowActive = true;
@@ -73,27 +72,31 @@ public class ParrySystem : MonoBehaviour
         Debug.Log("Parry Window Opened!");
     }
 
-    /// <summary>
-    /// 공격이 들어올 때 호출되는 함수
-    /// (실제 전투 시스템에서 공격 타이밍 맞춰 호출 필요)
-    /// </summary>
-    public void OnTriggerEnter2D(Collider2D attack)
+    private void OnTriggerEnter2D(Collider2D attack)
     {
-        if (parryWindowActive && attack.GetComponent<EnemyAttack>().canBeParried)
+        var enemyAttack = attack.GetComponent<EnemyAttack>();
+        if (enemyAttack == null) return;
+        if (parryWindowActive)
         {
-            // 성공
-            EndParryWindow(true, attack);
+            if (enemyAttack.canBeParried)
+            {
+                EndParryWindow(true, attack);
+            }
+            else
+            {
+                EndParryWindow(false);
+            }
+            return;
         }
-        else
+
+        if (!canParry && Input.GetKey(guardKey) && IsAttackFromFront(attack.transform.position))
         {
-            // 실패
-            EndParryWindow(false);
+            enemyAttack.ApplyDamageMultiplierOnce(guardDamageMultiplier);
+            Debug.Log("Guard! Damage reduced to 50% (front only).");
         }
+
     }
 
-    /// <summary>
-    /// 패링 윈도우 종료
-    /// </summary>
     private void EndParryWindow(bool success, Collider2D attack = null)
     {
         parryWindowActive = false;
@@ -101,8 +104,11 @@ public class ParrySystem : MonoBehaviour
         if (success)
         {
             Debug.Log("Parry Success!");
-            attack?.GetComponent<EnemyAttack>().CancelAttack();
-            code.RegisterParrySuccess();
+
+            var enemyAttack = attack != null ? attack.GetComponent<EnemyAttack>() : null;
+            enemyAttack?.CancelAttack();
+
+            if (code != null) code.RegisterParrySuccess();
         }
         else
         {
@@ -110,5 +116,23 @@ public class ParrySystem : MonoBehaviour
             canParry = false;
             cooldownTimer = parryCooldown;
         }
+    }
+
+    private bool IsAttackFromFront(Vector2 attackerPos)
+    {
+        float facingSign;
+
+        if (spriteRenderer != null)
+            facingSign = spriteRenderer.flipX ? -1f : 1f;
+        else
+            facingSign = Mathf.Sign(transform.localScale.x);
+
+        if (Mathf.Approximately(facingSign, 0f)) facingSign = 1f;
+
+        Vector2 facingDir = new Vector2(facingSign, 0f); // 2D에서 좌/우만 본다고 가정
+        Vector2 toAttacker = (attackerPos - (Vector2)transform.position).normalized;
+
+        // dot > 0 이면 공격자가 플레이어가 바라보는 방향에 있음
+        return Vector2.Dot(facingDir, toAttacker) > 0f;
     }
 }
