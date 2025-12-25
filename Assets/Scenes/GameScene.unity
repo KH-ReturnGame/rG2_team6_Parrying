@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 230065330}
   - component: {fileID: 230065331}
   - component: {fileID: 230065332}
+  - component: {fileID: 230065333}
   m_Layer: 0
   m_Name: boss_0001_0
   m_TagString: Untagged
@@ -265,6 +266,34 @@ MonoBehaviour:
   All_attack: {fileID: 1420143920}
   Ready_motion: {fileID: 1420143920}
   bossHPUI: {fileID: 0}
+  rigid: {fileID: 0}
+--- !u!50 &230065333
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230065327}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: bb87a3404785edb47b4ca8e025bf4249, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &307352608
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 230065327}
-  playerHP: 0
+  playerHP: 10
   playerMaxHP: 10
   playerATK: 0
   PP: 0
@@ -637,7 +666,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1420143921
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -645,7 +674,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420143920}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -788,7 +817,6 @@ GameObject:
   - component: {fileID: 1991405356}
   - component: {fileID: 1991405355}
   - component: {fileID: 1991405354}
-  - component: {fileID: 1991405359}
   - component: {fileID: 1991405358}
   - component: {fileID: 1991405360}
   m_Layer: 6
@@ -954,26 +982,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!111 &1991405359
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991405353}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: 56f1e817d1f455d40af4034da41914bb, type: 2}
-  - {fileID: 7400000, guid: af80b11d31fc9da4b80ef7ceb99b6e60, type: 2}
-  - {fileID: 7400000, guid: 95c4a10de39f7054199178b9275e6bed, type: 2}
-  - {fileID: 7400000, guid: 6f9b8e1b52f68e64ea7e38188f5bf86f, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!114 &1991405360
 MonoBehaviour:
   m_ObjectHideFlags: 0

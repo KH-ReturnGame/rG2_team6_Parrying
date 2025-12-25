@@ -33,7 +33,7 @@ public class PlayerMove : MonoBehaviour
     }
 
     void move(){
-        rigid.linearVelocityX = Input.GetAxis("Horizontal") * 10;
+        rigid.linearVelocityX = Input.GetAxisRaw("Horizontal") * 10;
 
         if(Input.GetKey(KeyCode.RightArrow)){
             animator.SetBool("isWalking", true);
