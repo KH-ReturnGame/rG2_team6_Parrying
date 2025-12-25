@@ -990,6 +990,8 @@ MonoBehaviour:
   rigid: {fileID: 1991405355}
   CanDash: 1
   cannotmove: 0
+  sprite: {fileID: 1991405356}
+  animator: {fileID: 1991405358}
 --- !u!1 &2043216204
 GameObject:
   m_ObjectHideFlags: 0
