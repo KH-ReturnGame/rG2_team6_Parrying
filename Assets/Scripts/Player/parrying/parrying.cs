@@ -74,8 +74,10 @@ public class ParrySystem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D attack)
     {
+        Debug.Log("fuck");
         var enemyAttack = attack.GetComponent<EnemyAttack>();
         if (enemyAttack == null) return;
+        Debug.Log("you");
         if (parryWindowActive)
         {
             if (enemyAttack.canBeParried)
@@ -94,11 +96,13 @@ public class ParrySystem : MonoBehaviour
             enemyAttack.ApplyDamageMultiplierOnce(guardDamageMultiplier);
             Debug.Log("Guard! Damage reduced to 50% (front only).");
         }
+        GameManager.Instance.playerHP--;
 
     }
 
     private void EndParryWindow(bool success, Collider2D attack = null)
     {
+        Debug.Log("Asdfqwedr");
         parryWindowActive = false;
 
         if (success)
@@ -114,6 +118,7 @@ public class ParrySystem : MonoBehaviour
         {
             Debug.Log("Parry Failed! Cooldown for 5s.");
             canParry = false;
+            GameManager.Instance.playerHP--;
             cooldownTimer = parryCooldown;
         }
     }

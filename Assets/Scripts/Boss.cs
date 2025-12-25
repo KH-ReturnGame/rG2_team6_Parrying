@@ -16,7 +16,7 @@ public class Boss : MonoBehaviour
     public GameObject tentacle;
     public GameObject verticle_tentacle; //1111
     public GameObject Egg;
-    public Collider2D All_attack;
+    public GameObject All_attack;
     public GameObject Ready_motion;
     public BossHPUI bossHPUI;
     private float lastHP = -1f;
@@ -125,7 +125,7 @@ public class Boss : MonoBehaviour
 
 
             case 1: // vertical tentacle summon
-                Ready_motion.SetActive(true);
+                //Ready_motion.SetActive(true);
                 yield return new WaitForSeconds(1f);
                 vertical_tentacle_skill(2f);
                
@@ -207,11 +207,12 @@ public class Boss : MonoBehaviour
 
 IEnumerator All_attack_on()
     {
-        
-        yield return new WaitForSeconds(2);
-        All_attack.enabled = true;
-        yield return new WaitForSeconds(3);
-        All_attack.enabled = false;
+        All_attack.SetActive(true);
+        yield return new WaitForSeconds(1.1f);
+        All_attack.GetComponent<Collider2D>().enabled = true;
+        yield return new WaitForSeconds(0.9f);
+        All_attack.GetComponent<Collider2D>().enabled = false;
+        All_attack.SetActive(false);
     }
 
 

@@ -7,12 +7,12 @@ public class PlayerAttack : MonoBehaviour
     [System.Serializable]
     public class AttackStep
     {
-        public int damage = 2; // °ø°Ý µ¥¹ÌÁö
-        public float activeTime = 0.3f; // °ø°Ý È°¼º ½Ã°£
-        public float active = 0.1f; // °ø°Ý È°¼ºÈ­ µô·¹ÀÌ
-        public float recovery = 1f; // ÈÄµô·¹ÀÌ
+        public int damage = 2; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        public float activeTime = 0.3f; // ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½ ï¿½Ã°ï¿½
+        public float active = 0.1f; // ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        public float recovery = 1f; // ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½
     }
-    [Header("ÀÔ·Â")]
-    public KeyCode attackKey = KeyCode.J;
-    public float comboBuffer = 0.2f; // ´ÙÀ½Å¸ ÀÔ·Â ¹öÆÛ
+    [Header("ï¿½Ô·ï¿½")]
+    public KeyCode attackKey = KeyCode.E;
+    public float comboBuffer = 0.2f; // ï¿½ï¿½ï¿½ï¿½Å¸ ï¿½Ô·ï¿½ ï¿½ï¿½ï¿½ï¿½
 }

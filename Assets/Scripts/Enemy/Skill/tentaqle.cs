@@ -3,10 +3,11 @@ using System.Collections;
 
 public class tentaqle : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Collider2D coll;
     void Start()
     {
         StartCoroutine(tentaqle_skill());
+        coll = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -17,7 +18,9 @@ public class tentaqle : MonoBehaviour
 
     IEnumerator tentaqle_skill()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.1f);
+        coll.enabled = true;
+        yield return new WaitForSeconds(0.9f);
         Destroy(gameObject);
     }
 }
