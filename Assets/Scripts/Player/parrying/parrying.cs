@@ -2,18 +2,17 @@ using UnityEngine;
 
 public class ParrySystem : MonoBehaviour
 {
-
-    private float parryCooldown = 5f;       // ��ٿ� �ð�
-    private float parryWindowDuration = 0.25f; // �и� ������ ���� �ð� (0.25��)
-
-    public bool canParry;
-    public bool parryWindowActive;
-    public float cooldownTimer;
-    public float parryWindowTimer;
+    private bool canParry = true;
+    private bool parryWindowActive = false; // 패링 윈도우 활성 상태
+    private float parryCooldown = 5f;  // 쿨다운 시간
+    private float cooldownTimer = 0f;
+    private float parryWindowDuration = 0.25f; // 패링 윈도우 지속 시간 (0.25초)
+    private float parryWindowTimer = 0f;
+    public PlayerReinforceAttack code;
 
     void awake()
     {
-        // �ʱ�ȭ
+        // 초기화
         canParry = true;
         parryWindowActive = false;
         cooldownTimer = 0f;
@@ -24,7 +23,7 @@ public class ParrySystem : MonoBehaviour
         HandleCooldown();
         HandleParryWindow();
 
-        // �и� �Է�
+        // 패링 입력
         if (Input.GetKeyDown(KeyCode.LeftShift) && canParry)
         {
             StartParryWindow();
@@ -32,7 +31,7 @@ public class ParrySystem : MonoBehaviour
     }
 
     /// <summary>
-    /// ��ٿ� ����
+    /// 쿨다운 관리
     /// </summary>
     private void HandleCooldown()
     {
@@ -48,7 +47,7 @@ public class ParrySystem : MonoBehaviour
     }
 
     /// <summary>
-    /// �и� ������ ����
+    /// 패링 윈도우 관리
     /// </summary>
     private void HandleParryWindow()
     {
@@ -56,7 +55,7 @@ public class ParrySystem : MonoBehaviour
         {
             parryWindowTimer -= Time.deltaTime;
 
-            // ������ ������ �ڵ� ���� ó��
+            // 윈도우 끝나면 자동 실패 처리
             if (parryWindowTimer <= 0f)
             {
                 EndParryWindow(false);
@@ -65,7 +64,7 @@ public class ParrySystem : MonoBehaviour
     }
 
     /// <summary>
-    /// �и� �õ� ���� �� ª�� �ð��� �и� ����
+    /// 패링 시도 시작 -> 짧은 시간만 패링 가능
     /// </summary>
     private void StartParryWindow()
     {
@@ -75,35 +74,35 @@ public class ParrySystem : MonoBehaviour
     }
 
     /// <summary>
-    /// ������ ���� �� ȣ��Ǵ� �Լ�
-    /// (���� ���� �ý��ۿ��� ���� Ÿ�̹� ���� ȣ�� �ʿ�)
+    /// 공격이 들어올 때 호출되는 함수
+    /// (실제 전투 시스템에서 공격 타이밍 맞춰 호출 필요)
     /// </summary>
-    public void OnCollision2D(EnemyAttack attack)
+    public void OnTriggerEnter2D(Collider2D attack)
     {
-        if (parryWindowActive && attack.canBeParried)
+        if (parryWindowActive && attack.GetComponent<EnemyAttack>().canBeParried)
         {
-            // ����
+            // 성공
             EndParryWindow(true, attack);
         }
         else
         {
-            // ����
+            // 실패
             EndParryWindow(false);
-            GameManager.Instance.playerHP -= attack.damage;
         }
     }
 
     /// <summary>
-    /// �и� ������ ����
+    /// 패링 윈도우 종료
     /// </summary>
-    private void EndParryWindow(bool success, EnemyAttack attack = null)
+    private void EndParryWindow(bool success, Collider2D attack = null)
     {
         parryWindowActive = false;
 
         if (success)
         {
             Debug.Log("Parry Success!");
-            attack?.CancelAttack();
+            attack?.GetComponent<EnemyAttack>().CancelAttack();
+            code.RegisterParrySuccess();
         }
         else
         {
@@ -113,7 +112,3 @@ public class ParrySystem : MonoBehaviour
         }
     }
 }
-
-/// <summary>
-/// ���� ��ü ����
-/// </summary>
