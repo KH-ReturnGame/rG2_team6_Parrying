@@ -5,7 +5,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 
 {
-    public SpriteRenderer sprite;
+    
     private Coroutine bossLoop;
     private int lastSkill1 = -1; // 가장 최근
     private int lastSkill2 = -1;
@@ -16,21 +16,16 @@ public class Boss : MonoBehaviour
     public GameObject tentacle;
     public GameObject verticle_tentacle; //1111
     public GameObject Egg;
-    public GameObject All_attack;
+    public Collider2D All_attack;
     public GameObject Ready_motion;
     public BossHPUI bossHPUI;
     private float lastHP = -1f;
-    public Rigidbody2D rigid;
 
     
-    void Awake(){
-        rigid = GetComponent<Rigidbody2D>();
-    }
 
     IEnumerator Start()
     {
         StartBossLoop();
-        
 
         yield return null; // 한 프레임 대기(초기화 순서 안정)
         if (bossHPUI != null && GameManager.Instance != null)
@@ -212,15 +207,11 @@ public class Boss : MonoBehaviour
 
 IEnumerator All_attack_on()
     {
-        sprite.enabled = false;
-        All_attack.SetActive(true);
-        yield return new WaitForSeconds(1.1f);
-        All_attack.GetComponent<Collider2D>().enabled = true;
-
-        yield return new WaitForSeconds(0.9f);
-        All_attack.GetComponent<Collider2D>().enabled = false;
-        All_attack.SetActive(false);
-        sprite.enabled = true;
+        
+        yield return new WaitForSeconds(2);
+        All_attack.enabled = true;
+        yield return new WaitForSeconds(3);
+        All_attack.enabled = false;
     }
 
 
