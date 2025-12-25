@@ -3,21 +3,18 @@ using UnityEngine;
 
 public class Ready_motion : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void OnEnable()
+    private Coroutine co;
+
+    private void OnEnable()
     {
-        StartCoroutine(Delay(3f));
-        gameObject.SetActive(false);
+        if (co != null) StopCoroutine(co);
+        co = StartCoroutine(DisableAfter(2f));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    IEnumerator Delay(float time)
+    private IEnumerator DisableAfter(float time)
     {
         yield return new WaitForSeconds(time);
+        gameObject.SetActive(false);
+        co = null;
     }
-
 }
