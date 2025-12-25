@@ -6,7 +6,7 @@ public class ParrySystem : MonoBehaviour
     private bool parryWindowActive = false; // 패링 윈도우 활성 상태
     private float parryCooldown = 5f;  // 쿨다운 시간
     private float cooldownTimer = 0f;
-    private float parryWindowDuration = 0.25f; // 패링 윈도우 지속 시간 (0.25초)
+    private float parryWindowDuration = 0.75f; // 패링 윈도우 지속 시간 (0.75초)
     private float parryWindowTimer = 0f;
 
     public PlayerReinforceAttack code;

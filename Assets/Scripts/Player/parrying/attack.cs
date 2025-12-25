@@ -13,6 +13,6 @@ public class PlayerAttack : MonoBehaviour
         public float recovery = 1f; // 후딜레이
     }
     [Header("입력")]
-    public KeyCode attackKey = KeyCode.J;
+    public KeyCode attackKey = KeyCode.E;
     public float comboBuffer = 0.2f; // 다음타 입력 버퍼
 }
