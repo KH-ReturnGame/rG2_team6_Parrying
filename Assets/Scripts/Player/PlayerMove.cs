@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
     public Rigidbody2D rigid;
     public bool CanDash = true;
     public bool cannotmove = false;
+    public BossHPUI bossHPUI_2;
     
     void Start(){
         
