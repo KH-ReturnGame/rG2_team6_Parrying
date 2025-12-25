@@ -7,8 +7,12 @@ public class PlayerMove : MonoBehaviour
     public Rigidbody2D rigid;
     public bool CanDash = true;
     public bool cannotmove = false;
+<<<<<<< HEAD
+    public BossHPUI bossHPUI_2;
+=======
     public SpriteRenderer sprite;
     public Animator animator;
+>>>>>>> 7860a08b06d3e27280b744c9e0fc007842cfd109
     
     void Start(){
         
@@ -33,7 +37,7 @@ public class PlayerMove : MonoBehaviour
     }
 
     void move(){
-        rigid.linearVelocityX = Input.GetAxis("Horizontal") * 10;
+        rigid.linearVelocityX = Input.GetAxisRaw("Horizontal") * 10;
 
         if(Input.GetKey(KeyCode.RightArrow)){
             animator.SetBool("isWalking", true);
