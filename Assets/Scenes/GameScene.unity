@@ -645,7 +645,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420143920}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -791,6 +791,10 @@ GameObject:
   - component: {fileID: 1991405359}
   - component: {fileID: 1991405358}
   - component: {fileID: 1991405360}
+  - component: {fileID: 1991405364}
+  - component: {fileID: 1991405363}
+  - component: {fileID: 1991405362}
+  - component: {fileID: 1991405361}
   m_Layer: 6
   m_Name: player_attack_1_0
   m_TagString: Player
@@ -992,6 +996,74 @@ MonoBehaviour:
   cannotmove: 0
   sprite: {fileID: 1991405356}
   animator: {fileID: 1991405358}
+--- !u!114 &1991405361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991405353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967bff4532f7b0a41ad6dbd19a36edc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reinforceKey: 113
+  parryNeeded: 0
+  currentParryCount: 0
+  reinforceReady: 1
+  reinforceDamage: 10
+  animator: {fileID: 0}
+  reinforceAttackTrigger: ReinforceAttack
+  OnReinforceAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  accumulatedBlockedAttackPower: 0
+  hasParriedAtLeastOnce: 0
+--- !u!114 &1991405362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991405353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb3da197979da848802a153d1d590f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  code: {fileID: 0}
+  guardKey: 113
+  guardDamageMultiplier: 0.5
+  spriteRenderer: {fileID: 0}
+--- !u!114 &1991405363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991405353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5b6fe80d9510e4b8be2487b6b4cb9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBeParried: 0
+  damage: 0
+--- !u!114 &1991405364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991405353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e3f5c249d2c2b9488d2b21377360056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackKey: 101
+  comboBuffer: 0.2
 --- !u!1 &2043216204
 GameObject:
   m_ObjectHideFlags: 0
