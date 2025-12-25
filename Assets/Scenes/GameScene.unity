@@ -1720,10 +1720,13 @@ PolygonCollider2D:
       - {x: 0.65625, y: 0.21875}
   m_UseDelaunayMesh: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!50 &1446402668
 Rigidbody2D:
   serializedVersion: 5
 =======
+=======
+>>>>>>> parent of 8f94b9e (진짜로 ㄹㅇ)
 --- !u!1 &2043216204
 GameObject:
 >>>>>>> parent of 8f94b9e (진짜로 ㄹㅇ)
