@@ -2,28 +2,49 @@ using UnityEngine;
 
 public class ParrySystem : MonoBehaviour
 {
+    [Header("Parry")]
+    [SerializeField] private KeyCode parryKey = KeyCode.LeftShift;
+    [SerializeField] private float parryCooldown = 5f;
+    [SerializeField] private float parryWindowDuration = 0.75f;
+
     private bool canParry = true;
-    private bool parryWindowActive = false; // 패링 윈도우 활성 상태
-    private float parryCooldown = 5f;  // 쿨다운 시간
+    private bool parryWindowActive = false;
     private float cooldownTimer = 0f;
-    private float parryWindowDuration = 0.75f; // 패링 윈도우 지속 시간 (0.75초)
     private float parryWindowTimer = 0f;
 
     public PlayerReinforceAttack code;
 
-    //가드(데미지 감소) 설정 
     [Header("Guard (Q)")]
     [SerializeField] private KeyCode guardKey = KeyCode.Q;
     [Range(0f, 1f)]
-    [SerializeField] private float guardDamageMultiplier = 0.5f; // 50% 데미지
+    [SerializeField] private float guardDamageMultiplier = 0.5f;
     [SerializeField] private SpriteRenderer spriteRenderer;
+
+    [Header("Disable movement while holding parry key (FULL LOCK)")]
+    [SerializeField] private MonoBehaviour movementScriptToDisable;
+    [SerializeField] private Rigidbody2D rb;
+
+    [Header("Animation (Optional)")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private string parryBoolName = "isparrying";
+
+    // 완전 고정용
+    private bool movementLocked = false;
+    private RigidbodyConstraints2D originalConstraints;
 
     private void Awake()
     {
+        if (rb == null) rb = GetComponent<Rigidbody2D>();
+        if (spriteRenderer == null) spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (animator == null) animator = GetComponentInChildren<Animator>();
+
+        if (rb != null) originalConstraints = rb.constraints;
+
         canParry = true;
-        parryWindowActive = false; // [수정] false;w -> false;
+        parryWindowActive = false;
         cooldownTimer = 0f;
         parryWindowTimer = 0f;
+        movementLocked = false;
     }
 
     private void Update()
@@ -31,10 +52,74 @@ public class ParrySystem : MonoBehaviour
         HandleCooldown();
         HandleParryWindow();
 
-        // 패링 입력
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canParry)
+        // 패링 입력(눌렀을 때 시작)
+        if (Input.GetKeyDown(parryKey) && canParry && !parryWindowActive)
         {
             StartParryWindow();
+        }
+
+        // 쉬프트를 누르고 있는 동안 완전히 고정
+        HandleFullLockWhileHoldingParryKey();
+    }
+
+    private void HandleFullLockWhileHoldingParryKey()
+    {
+        bool holding = Input.GetKey(parryKey);
+
+        if (holding)
+        {
+            LockMovementFully();
+
+            // (선택) 홀드 컨셉: 키를 떼는 순간 패링 윈도우 종료
+            if (parryWindowActive && Input.GetKeyUp(parryKey))
+            {
+                EndParryWindow(false, null);
+            }
+        }
+        else
+        {
+            // 키를 떼었고, 패링 윈도우도 끝난 상태면 이동 복구
+            if (!parryWindowActive)
+            {
+                UnlockMovementFully();
+            }
+        }
+    }
+
+    private void LockMovementFully()
+    {
+        if (movementLocked) return;
+        movementLocked = true;
+
+        // 1) 이동 스크립트 off
+        if (movementScriptToDisable != null)
+            movementScriptToDisable.enabled = false;
+
+        // 2) 물리까지 완전 고정 (넉백/밀림/미끄러짐 방지)
+        if (rb != null)
+        {
+            originalConstraints = rb.constraints; 
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+    }
+
+    private void UnlockMovementFully()
+    {
+        if (!movementLocked) return;
+        movementLocked = false;
+
+        // 1) 이동 스크립트 on
+        if (movementScriptToDisable != null)
+            movementScriptToDisable.enabled = true;
+
+        // 2) 고정 해제
+        if (rb != null)
+        {
+            rb.constraints = originalConstraints;
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
         }
     }
 
@@ -46,6 +131,7 @@ public class ParrySystem : MonoBehaviour
             if (cooldownTimer <= 0f)
             {
                 canParry = true;
+                cooldownTimer = 0f;
                 Debug.Log("Parry ready again!");
             }
         }
@@ -53,15 +139,13 @@ public class ParrySystem : MonoBehaviour
 
     private void HandleParryWindow()
     {
-        if (parryWindowActive)
-        {
-            parryWindowTimer -= Time.deltaTime;
+        if (!parryWindowActive) return;
 
-            // 윈도우 끝나면 자동 실패 처리
-            if (parryWindowTimer <= 0f)
-            {
-                EndParryWindow(false);
-            }
+        parryWindowTimer -= Time.deltaTime;
+
+        if (parryWindowTimer <= 0f)
+        {
+            EndParryWindow(false, null);
         }
     }
 
@@ -70,74 +154,76 @@ public class ParrySystem : MonoBehaviour
         parryWindowActive = true;
         parryWindowTimer = parryWindowDuration;
         Debug.Log("Parry Window Opened!");
+
+        // 패링 시작 시 즉시 완전 고정
+        LockMovementFully();
+
+        if (animator != null && !string.IsNullOrEmpty(parryBoolName))
+            animator.SetBool(parryBoolName, true);
     }
 
-    private void OnTriggerEnter2D(Collider2D attack)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("fuck");
-        var enemyAttack = attack.GetComponent<EnemyAttack>();
+        var enemyAttack = other.GetComponent<EnemyAttack>();
         if (enemyAttack == null) return;
-        Debug.Log("you");
+
         if (parryWindowActive)
         {
-            if (enemyAttack.canBeParried)
-            {
-                EndParryWindow(true, attack);
-            }
-            else
-            {
-                EndParryWindow(false);
-            }
+            EndParryWindow(enemyAttack.canBeParried, other);
             return;
         }
 
-        if (!canParry && Input.GetKey(guardKey) && IsAttackFromFront(attack.transform.position))
+        if (!canParry && Input.GetKey(guardKey) && IsAttackFromFront(other.transform.position))
         {
             enemyAttack.ApplyDamageMultiplierOnce(guardDamageMultiplier);
             Debug.Log("Guard! Damage reduced to 50% (front only).");
+            return;
         }
-        GameManager.Instance.playerHP--;
 
+        if (GameManager.Instance != null)
+            GameManager.Instance.playerHP--;
     }
 
-    private void EndParryWindow(bool success, Collider2D attack = null)
+    private void EndParryWindow(bool success, Collider2D attack)
     {
-        Debug.Log("Asdfqwedr");
         parryWindowActive = false;
+
+        if (animator != null && !string.IsNullOrEmpty(parryBoolName))
+            animator.SetBool(parryBoolName, false);
 
         if (success)
         {
             Debug.Log("Parry Success!");
-
-            var enemyAttack = attack != null ? attack.GetComponent<EnemyAttack>() : null;
+            var enemyAttack = (attack != null) ? attack.GetComponent<EnemyAttack>() : null;
             enemyAttack?.CancelAttack();
-
             if (code != null) code.RegisterParrySuccess();
         }
         else
         {
             Debug.Log("Parry Failed! Cooldown for 5s.");
             canParry = false;
-            GameManager.Instance.playerHP--;
             cooldownTimer = parryCooldown;
+
+            if (GameManager.Instance != null)
+                GameManager.Instance.playerHP--;
         }
+
+        // 키를 이미 떼었다면 즉시 복구, 아직 누르고 있으면 계속 고정 유지
+        if (!Input.GetKey(parryKey))
+            UnlockMovementFully();
     }
 
     private bool IsAttackFromFront(Vector2 attackerPos)
     {
-        float facingSign;
-
-        if (spriteRenderer != null)
-            facingSign = spriteRenderer.flipX ? -1f : 1f;
-        else
-            facingSign = Mathf.Sign(transform.localScale.x);
+        float facingSign = (spriteRenderer != null)
+            ? (spriteRenderer.flipX ? -1f : 1f)
+            : Mathf.Sign(transform.localScale.x);
 
         if (Mathf.Approximately(facingSign, 0f)) facingSign = 1f;
 
-        Vector2 facingDir = new Vector2(facingSign, 0f); // 2D에서 좌/우만 본다고 가정
+        Vector2 facingDir = new Vector2(facingSign, 0f);
         Vector2 toAttacker = (attackerPos - (Vector2)transform.position).normalized;
 
-        // dot > 0 이면 공격자가 플레이어가 바라보는 방향에 있음
         return Vector2.Dot(facingDir, toAttacker) > 0f;
     }
 }
