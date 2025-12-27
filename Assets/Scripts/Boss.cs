@@ -180,7 +180,7 @@ public class Boss : MonoBehaviour
 
     void tentacle_skill(bool a)
     {
-         Instantiate(tentacle,new Vector3(10,1.5f, 0), Quaternion.Euler(0, 0, 0));
+         Instantiate(tentacle,new Vector3(0, 0f, 0), Quaternion.Euler(0, 0, 0));
 
             
        

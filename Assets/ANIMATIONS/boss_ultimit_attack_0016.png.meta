@@ -116,12 +116,12 @@ TextureImporter:
       name: boss_ultimit_attack_0016_0
       rect:
         serializedVersion: 2
-        x: 185
-        y: 26
-        width: 30
-        height: 199
+        x: 0
+        y: 0
+        width: 400
+        height: 225
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 363f7530eea3dfa45af303ae2f36c8a1
     internalID: 0
     vertices: []
     indices: 
