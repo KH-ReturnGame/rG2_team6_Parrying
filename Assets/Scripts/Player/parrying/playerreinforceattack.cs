@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class PlayerReinforceAttack : MonoBehaviour
@@ -89,12 +89,13 @@ public class PlayerReinforceAttack : MonoBehaviour
         reinforceDamage = CalculateReinforceDamage(accumulatedBlockedAttackPower);
 
         Debug.Log($"Reinforce Attack Damage = {reinforceDamage}");
+        GameManager.Instance.bossHP -= reinforceDamage;
 
         if (animator != null && !string.IsNullOrEmpty(reinforceAttackTrigger))
             animator.SetTrigger(reinforceAttackTrigger);
 
         OnReinforceAttack?.Invoke(reinforceDamage);
-
+        
         // 사용 후 상태 초기화(다음 강회공격을 다시 모으게 함)
         ResetReinforceState();
 

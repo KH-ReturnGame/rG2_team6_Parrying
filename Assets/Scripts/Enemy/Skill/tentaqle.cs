@@ -18,7 +18,7 @@ public class tentaqle : MonoBehaviour
 
     IEnumerator tentaqle_skill()
     {
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(0.5f);
         coll.enabled = true;
         yield return new WaitForSeconds(0.9f);
         Destroy(gameObject);
