@@ -26,6 +26,8 @@ public class PlayerReinforceAttack : MonoBehaviour
     public int ParryNeeded => parryNeeded;
     public bool ReinforceReady => reinforceReady;
 
+    public GameObject particle;
+
     // 누적된 "막은 공격력" (패링 성공 시 적 공격력(damage 등)을 누적)
     [Header("Accumulated Blocked Attack Power")]
     [SerializeField] private float accumulatedBlockedAttackPower = 0f;
@@ -89,18 +91,20 @@ public class PlayerReinforceAttack : MonoBehaviour
         reinforceDamage = CalculateReinforceDamage(accumulatedBlockedAttackPower);
 
         Debug.Log($"Reinforce Attack Damage = {reinforceDamage}");
-        GameManager.Instance.bossHP -= reinforceDamage;
+        
 
         if (animator != null && !string.IsNullOrEmpty(reinforceAttackTrigger))
             animator.SetTrigger(reinforceAttackTrigger);
             GameManager.Instance.playerMove = false;
+            GameManager.Instance.player.GetComponent<SpriteRenderer>().flipX = false;
 
         OnReinforceAttack?.Invoke(reinforceDamage);
         
         // 사용 후 상태 초기화(다음 강회공격을 다시 모으게 함)
         ResetReinforceState();
-
+        
         GameManager.Instance.playerMove = true;
+        
         return true;
     }
 
@@ -123,5 +127,10 @@ public class PlayerReinforceAttack : MonoBehaviour
     {
         float dmg = 4f + 5.6f * Mathf.Sqrt(Mathf.Max(0f, blockedPower));
         return Mathf.RoundToInt(dmg);
+    }
+
+    void instantiate(){
+        Instantiate(particle, transform.position + new Vector3(10, -1, 0), Quaternion.Euler(0, 0, 0));
+        GameManager.Instance.bossHP -= reinforceDamage;
     }
 }

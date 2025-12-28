@@ -1278,8 +1278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 230065327}
-  playerHP: 10
-  playerMaxHP: 10
+  playerHP: 20
+  playerMaxHP: 20
   playerATK: 0
   PP: 0
   player: {fileID: 1991405353}
@@ -1646,7 +1646,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1420143921
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1654,7 +1654,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420143920}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -1681,7 +1681,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.12391782, y: -0.09293842}
+  m_Offset: {x: 0.24273014, y: -0.09293842}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1691,7 +1691,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 13.019993, y: 8.95137}
+  m_Size: {x: 7.3764334, y: 8.95137}
   m_EdgeRadius: 0
 --- !u!4 &1420143922
 Transform:

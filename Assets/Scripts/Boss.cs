@@ -146,7 +146,7 @@ public class Boss : MonoBehaviour
             
 
             case 4: // Egg_vertical
-                vertical_tentacle_skill(5);
+                vertical_tentacle_skill(5f);
                 for (int i = 0; i < 6; i++) {
                     Egg_skill(20);
                 }
@@ -158,7 +158,7 @@ public class Boss : MonoBehaviour
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    vertical_tentacle_skill(4);
+                    vertical_tentacle_skill(2f);
                     yield return new WaitForSeconds(0.5f);
                    
                     
