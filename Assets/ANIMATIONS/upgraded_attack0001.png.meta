@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 9322d4e14f3c26647b6a6b2abcdde3dd
+guid: c52a8ed5e0163074a84657841591d0ab
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5420642201464878349
-    second: boss_ultimit_0005_0
-  - first:
-      213: 8221527379918194399
-    second: boss_ultimit_0005_1
+      213: -648461680230020036
+    second: upgraded_attack0001_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,9 +40,9 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -78,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -99,62 +96,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boss_ultimit_0005_0
+      name: upgraded_attack0001_0
       rect:
         serializedVersion: 2
-        x: 56
-        y: 31
-        width: 288
-        height: 194
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3fac13733a206c4b0800000000000000
-      internalID: -5420642201464878349
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boss_ultimit_0005_1
-      rect:
-        serializedVersion: 2
-        x: 93
-        y: 3
-        width: 22
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fd60c2fa79bb81270800000000000000
-      internalID: 8221527379918194399
+      spriteID: c3ccf6b99833007f0800000000000000
+      internalID: -648461680230020036
       vertices: []
       indices: 
       edges: []
@@ -163,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4a4ac770b88dc424ba8651a84bd6f286
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      boss_ultimit_0005_0: -5420642201464878349
-      boss_ultimit_0005_1: 8221527379918194399
+      upgraded_attack0001_0: -648461680230020036
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

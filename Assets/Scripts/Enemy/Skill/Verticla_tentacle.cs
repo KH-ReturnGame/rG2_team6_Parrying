@@ -1,13 +1,13 @@
 using UnityEngine;
 using System.Collections; // 이게 있어야 코루틴 사용 가능
 
-/*public class Vertic : MonoBehaviour
+public class Vertic : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Collider2D coll;
     void Start()
     {
         StartCoroutine(Delay());
-        
+        coll = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -18,7 +18,9 @@ using System.Collections; // 이게 있어야 코루틴 사용 가능
 
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
+        coll.enabled = true;
+        yield return new WaitForSeconds(0.3f);
         Destroy(gameObject);
     }
-}*/
+}

@@ -125,7 +125,7 @@ public class Boss : MonoBehaviour
 
 
             case 1: // vertical tentacle summon
-                Ready_motion.SetActive(true);
+                //Ready_motion.SetActive(true);
                 yield return new WaitForSeconds(1f);
                 vertical_tentacle_skill(2f);
                
@@ -180,7 +180,7 @@ public class Boss : MonoBehaviour
 
     void tentacle_skill(bool a)
     {
-         Instantiate(tentacle,new Vector3(10,1.5f, 0), Quaternion.Euler(0, 0, 0));
+         Instantiate(tentacle,new Vector3(0, 0f, 0), Quaternion.Euler(0, 0, 0));
 
             
        
@@ -207,10 +207,11 @@ public class Boss : MonoBehaviour
 
 IEnumerator All_attack_on()
     {
-        
-        yield return new WaitForSeconds(2);
         All_attack.SetActive(true);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.1f);
+        All_attack.GetComponent<Collider2D>().enabled = true;
+        yield return new WaitForSeconds(0.9f);
+        All_attack.GetComponent<Collider2D>().enabled = false;
         All_attack.SetActive(false);
     }
 

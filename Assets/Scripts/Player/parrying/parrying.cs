@@ -6,10 +6,11 @@ public class ParrySystem : MonoBehaviour
     private bool parryWindowActive = false; // 패링 윈도우 활성 상태
     private float parryCooldown = 5f;  // 쿨다운 시간
     private float cooldownTimer = 0f;
-    private float parryWindowDuration = 0.25f; // 패링 윈도우 지속 시간 (0.25초)
+    private float parryWindowDuration = 0.75f; // 패링 윈도우 지속 시간 (0.75초)
     private float parryWindowTimer = 0f;
 
     public PlayerReinforceAttack code;
+    public Animator animator;
 
     //가드(데미지 감소) 설정 
     [Header("Guard (Q)")]
@@ -67,6 +68,8 @@ public class ParrySystem : MonoBehaviour
 
     private void StartParryWindow()
     {
+        animator.SetTrigger("parrying");
+        GameManager.Instance.playerMove = false;
         parryWindowActive = true;
         parryWindowTimer = parryWindowDuration;
         Debug.Log("Parry Window Opened!");
@@ -74,8 +77,10 @@ public class ParrySystem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D attack)
     {
+        Debug.Log("fuck");
         var enemyAttack = attack.GetComponent<EnemyAttack>();
         if (enemyAttack == null) return;
+        Debug.Log("you");
         if (parryWindowActive)
         {
             if (enemyAttack.canBeParried)
@@ -94,11 +99,13 @@ public class ParrySystem : MonoBehaviour
             enemyAttack.ApplyDamageMultiplierOnce(guardDamageMultiplier);
             Debug.Log("Guard! Damage reduced to 50% (front only).");
         }
+        GameManager.Instance.playerHP--;
 
     }
 
     private void EndParryWindow(bool success, Collider2D attack = null)
     {
+        Debug.Log("Asdfqwedr");
         parryWindowActive = false;
 
         if (success)
@@ -114,8 +121,11 @@ public class ParrySystem : MonoBehaviour
         {
             Debug.Log("Parry Failed! Cooldown for 5s.");
             canParry = false;
+            GameManager.Instance.playerHP--;
             cooldownTimer = parryCooldown;
         }
+        animator.SetTrigger("endparrying");
+        GameManager.Instance.playerMove = true;
     }
 
     private bool IsAttackFromFront(Vector2 attackerPos)
