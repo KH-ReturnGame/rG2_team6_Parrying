@@ -69,6 +69,7 @@ public class ParrySystem : MonoBehaviour
     private void StartParryWindow()
     {
         animator.SetTrigger("parrying");
+        GameManager.Instance.playerMove = false;
         parryWindowActive = true;
         parryWindowTimer = parryWindowDuration;
         Debug.Log("Parry Window Opened!");
@@ -88,7 +89,7 @@ public class ParrySystem : MonoBehaviour
             }
             else
             {
-                EndParryWindow(false);
+                EndParryWindow(false, attack);
             }
             return;
         }
@@ -98,7 +99,7 @@ public class ParrySystem : MonoBehaviour
             enemyAttack.ApplyDamageMultiplierOnce(guardDamageMultiplier);
             Debug.Log("Guard! Damage reduced to 50% (front only).");
         }
-        GameManager.Instance.playerHP--;
+        GameManager.Instance.playerHP -= enemyAttack.damage;
 
     }
 
@@ -114,16 +115,18 @@ public class ParrySystem : MonoBehaviour
             var enemyAttack = attack != null ? attack.GetComponent<EnemyAttack>() : null;
             enemyAttack?.CancelAttack();
 
-            if (code != null) code.RegisterParrySuccess();
+            if (code != null) code.RegisterParrySuccess(enemyAttack.damage);
         }
         else
         {
+            var enemyAttack = attack != null ? attack.GetComponent<EnemyAttack>() : null;
             Debug.Log("Parry Failed! Cooldown for 5s.");
             canParry = false;
-            GameManager.Instance.playerHP--;
+            //GameManager.Instance.playerHP --;
             cooldownTimer = parryCooldown;
         }
         animator.SetTrigger("endparrying");
+        GameManager.Instance.playerMove = true;
     }
 
     private bool IsAttackFromFront(Vector2 attackerPos)

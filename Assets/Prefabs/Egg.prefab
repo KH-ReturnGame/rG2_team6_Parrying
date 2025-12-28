@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 953813998945552561}
   - component: {fileID: -6196477733289041472}
   - component: {fileID: 1381340578235142738}
-  - component: {fileID: -8319516675152620083}
   m_Layer: 8
   m_Name: Egg
-  m_TagString: Untagged
+  m_TagString: Shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,17 +166,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.40625
---- !u!114 &-8319516675152620083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794708268047322259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf5b6fe80d9510e4b8be2487b6b4cb9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canBeParried: 1
-  damage: 0

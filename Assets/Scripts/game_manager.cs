@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
 
     public bool playerDie;
+    public bool playerMove = true;
 
     [Header("# Boss")]
     public float bossHP;

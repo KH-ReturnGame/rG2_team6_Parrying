@@ -16,6 +16,7 @@ public class PlayerMove : MonoBehaviour
         
         CanDash = true;
         rigid = GetComponent<Rigidbody2D>();
+        GameManager.Instance.playerMove = true;
         HP = GameManager.Instance.playerHP = 10;
     }
 
@@ -27,13 +28,19 @@ public class PlayerMove : MonoBehaviour
     }
 
     void FixedUpdate(){
-        move();
+        if(GameManager.Instance.playerMove){
+            move();
+        }
+        else{
+            rigid.linearVelocityX = 0;
+        }
+        
         
         
     }
 
     void move(){
-        rigid.linearVelocityX = Input.GetAxis("Horizontal") * 10;
+        rigid.linearVelocityX = Input.GetAxisRaw("Horizontal") * 10;
         if(Input.GetKey(KeyCode.RightArrow)){
             sprite.flipX = false;
             animator.SetBool("isWalking", true);
