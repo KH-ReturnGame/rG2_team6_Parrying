@@ -51,8 +51,8 @@ public class Boss : MonoBehaviour
 
     int GetNextSkillNoLast2()
     {
-        int min = phase2Start ? 3 : 0;
-        int max = phase2Start ? 7 : 3; // max 미포함
+        int min = phase2Start ? 2 : 0;
+        int max = phase2Start ? 7 : 3; 
 
         int range = max - min;
 
@@ -119,30 +119,74 @@ public class Boss : MonoBehaviour
 
     switch (skill)
         {
-            case 0: // tentacle summon
+            case 0:
+            {
+                Vector2 attackPos = new Vector2(0f, 0f); // tentacle_skill이 쓰는 위치와 동일
+                Vector2 size = GetColliderSize(tentacle);
+                float warnTime = 0.8f;
+
+                yield return StartCoroutine(ShowDangerRect(attackPos, size, warnTime));
                 tentacle_skill(true);
                 break;
+            }
 
 
-            case 1: // vertical tentacle summon
-                //Ready_motion.SetActive(true);
-                yield return new WaitForSeconds(1f);
+
+            case 1:
+            {
+                Vector2 attackPos = GameManager.Instance.player.transform.position + new Vector3(0, -2, 0);
+
+                // 촉수 히트박스 기준 크기 얻기
+                Collider2D col = verticle_tentacle.GetComponent<Collider2D>();
+                Vector2 size = col.bounds.size;
+
+                // 위험 표시
+                yield return StartCoroutine(
+                    ShowDangerRect(attackPos, size, 1f)
+                );
+
+                // 실제 공격
                 vertical_tentacle_skill(2f);
-               
-                
                 break;
+            }
 
-            case 2: // Egg summon
+
+            case 2:
+            {
+                float warnTime = 0.6f;
+                Vector2 eggSize = GetColliderSize(Egg);
+
                 for (int i = 0; i < 4; i++)
                 {
-                    Egg_skill(0);
+                    // ✅ 실제 생성될 좌표를 미리 결정
+                    Vector2 spawnPos = new Vector2(
+                        Random.Range(transform.position.x, -8),
+                        GameManager.Instance.player.transform.position.y + 0f
+                    );
+
+                    // 예고
+                    yield return StartCoroutine(ShowDangerRect(spawnPos, eggSize, warnTime));
+
+                    // 실제 생성(좌표를 직접 넘겨서 일치 보장)
+                    Instantiate(Egg, spawnPos, Quaternion.identity);
                 }
-
                 break;
+            }
 
-            case 3: // All_attack
-                yield return (All_attack_on());
+            case 3:
+            {
+                Collider2D col = All_attack.GetComponent<Collider2D>();
+                Vector2 pos = col.bounds.center;
+                Vector2 size = col.bounds.size;
+
+                yield return StartCoroutine(
+                    ShowDangerRect(pos, size, 1.2f)
+                );
+
+                yield return StartCoroutine(All_attack_on());
                 break;
+            }
+
             
 
             case 4: // Egg_vertical
@@ -154,26 +198,32 @@ public class Boss : MonoBehaviour
 
 
 
-            case 5: // vertical_tentacle * 4, tentacle_skill * 1
+            case 5:
             {
+                float warnTime = 0.7f;
+
+                // 세로 촉수 4회
                 for (int i = 0; i < 4; i++)
                 {
-                    vertical_tentacle_skill(4);
-                    yield return new WaitForSeconds(0.5f);
-                   
-                    
+                    Vector2 pos = (Vector2)GameManager.Instance.player.transform.position + new Vector2(0f, -2f);
+                    Vector2 size = GetColliderSize(verticle_tentacle) * 4f; // 네 스케일 반영
 
+                    yield return StartCoroutine(ShowDangerRect(pos, size, warnTime));
+                    vertical_tentacle_skill(4f);
+
+                    yield return new WaitForSeconds(0.2f); // 패턴 템포(원하면)
                 }
-                
+
+                // 마지막 촉수 1회
+                Vector2 tpos = new Vector2(0f, 0f);
+                Vector2 tsize = GetColliderSize(tentacle);
+
+                yield return StartCoroutine(ShowDangerRect(tpos, tsize, 0.8f));
                 tentacle_skill(true);
+
                 break;
             }
 
-
-            case 6: // Reverse tentacle
-
-                tentacle_skill(false);
-                break;
         }
     
     }
@@ -214,6 +264,23 @@ IEnumerator All_attack_on()
         All_attack.GetComponent<Collider2D>().enabled = false;
         All_attack.SetActive(false);
     }
+[SerializeField] private GameObject dangerRectPrefab;
+
+IEnumerator ShowDangerRect(Vector2 pos, Vector2 size, float duration)
+{
+    GameObject danger = Instantiate(dangerRectPrefab, pos, Quaternion.identity);
+    danger.transform.localScale = size;
+
+    yield return new WaitForSeconds(duration);
+
+    Destroy(danger);
+}
+
+Vector2 GetColliderSize(GameObject prefabOrObj)
+{
+    var col = prefabOrObj.GetComponentInChildren<Collider2D>(true);
+    return col != null ? (Vector2)col.bounds.size : Vector2.one;
+}
 
 
 }

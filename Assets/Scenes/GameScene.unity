@@ -1210,8 +1210,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frontSlider: {fileID: 851777098}
   backSlider: {fileID: 1897987919}
+  frontFill: {fileID: 0}
+  backFill: {fileID: 0}
+  highColor: {r: 0, g: 1, b: 0, a: 1}
+  midColor: {r: 1, g: 0.85, b: 0, a: 1}
+  lowColor: {r: 1, g: 0, b: 0, a: 1}
+  enableBlink: 1
+  blinkStartRatio: 0.3
+  blinkSpeed: 6
+  blinkMinAlpha: 0.35
   backDelay: 0.3
   backSmoothTime: 0.5
+  enableSuccessFlash: 0
+  successColor: {r: 0.3, g: 1, b: 1, a: 1}
+  successFlashTime: 0.25
+  enableReadyFx: 0
+  readyColor: {r: 0.2, g: 1, b: 0.6, a: 1}
+  readyFxTime: 0.25
 --- !u!1 &1247594630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,8 +1293,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 230065327}
-  playerHP: 10
-  playerMaxHP: 10
+  playerHP: 20
+  playerMaxHP: 20
   playerATK: 0
   PP: 0
   player: {fileID: 1991405353}
@@ -1681,7 +1696,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.12391782, y: -0.09293842}
+  m_Offset: {x: 0.24273014, y: -0.09293842}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1691,7 +1706,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 13.019993, y: 8.95137}
+  m_Size: {x: 7.3764334, y: 8.95137}
   m_EdgeRadius: 0
 --- !u!4 &1420143922
 Transform:
@@ -1930,8 +1945,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frontSlider: {fileID: 1054618292}
   backSlider: {fileID: 1827106116}
+  frontFill: {fileID: 0}
+  backFill: {fileID: 0}
+  highColor: {r: 0, g: 1, b: 0, a: 1}
+  midColor: {r: 1, g: 0.85, b: 0, a: 1}
+  lowColor: {r: 1, g: 0, b: 0, a: 1}
+  enableBlink: 1
+  blinkStartRatio: 0.3
+  blinkSpeed: 6
+  blinkMinAlpha: 0.35
   backDelay: 0.15
   backSmoothTime: 0.25
+  enableSuccessFlash: 0
+  successColor: {r: 0.3, g: 1, b: 1, a: 1}
+  successFlashTime: 0.25
+  enableReadyFx: 0
+  readyColor: {r: 0.2, g: 1, b: 0.6, a: 1}
+  readyFxTime: 0.25
 --- !u!1 &1786991766
 GameObject:
   m_ObjectHideFlags: 0
@@ -2629,6 +2659,7 @@ MonoBehaviour:
   OnReinforceAttack:
     m_PersistentCalls:
       m_Calls: []
+  particle: {fileID: 5880630383590903539, guid: 534397fabda27be45bc69c42effb7357, type: 3}
   accumulatedBlockedAttackPower: 0
   hasParriedAtLeastOnce: 0
 --- !u!114 &1991405363
