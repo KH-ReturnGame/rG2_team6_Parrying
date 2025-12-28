@@ -99,7 +99,7 @@ public class ParrySystem : MonoBehaviour
             enemyAttack.ApplyDamageMultiplierOnce(guardDamageMultiplier);
             Debug.Log("Guard! Damage reduced to 50% (front only).");
         }
-        GameManager.Instance.playerHP--;
+        GameManager.Instance.playerHP -= enemyAttack.damage;
 
     }
 
