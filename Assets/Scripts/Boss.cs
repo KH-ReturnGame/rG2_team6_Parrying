@@ -51,8 +51,8 @@ public class Boss : MonoBehaviour
 
     int GetNextSkillNoLast2()
     {
-        int min = phase2Start ? 3 : 0;
-        int max = phase2Start ? 7 : 3; // max 미포함
+        int min = phase2Start ? 2 : 0;
+        int max = phase2Start ? 7 : 3; 
 
         int range = max - min;
 
@@ -168,12 +168,6 @@ public class Boss : MonoBehaviour
                 tentacle_skill(true);
                 break;
             }
-
-
-            case 6: // Reverse tentacle
-
-                tentacle_skill(false);
-                break;
         }
     
     }
