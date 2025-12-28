@@ -369,7 +369,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: click any button to restart
+  m_Text: click P to restart
 --- !u!222 &1447273854
 CanvasRenderer:
   m_ObjectHideFlags: 0
