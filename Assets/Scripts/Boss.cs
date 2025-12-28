@@ -190,7 +190,7 @@ public class Boss : MonoBehaviour
             
 
             case 4: // Egg_vertical
-                vertical_tentacle_skill(5);
+                vertical_tentacle_skill(3.5f);
                 for (int i = 0; i < 6; i++) {
                     Egg_skill(20);
                 }
@@ -209,7 +209,7 @@ public class Boss : MonoBehaviour
                     Vector2 size = GetColliderSize(verticle_tentacle) * 4f; // 네 스케일 반영
 
                     yield return StartCoroutine(ShowDangerRect(pos, size, warnTime));
-                    vertical_tentacle_skill(4f);
+                    vertical_tentacle_skill(2f);
 
                     yield return new WaitForSeconds(0.2f); // 패턴 템포(원하면)
                 }
