@@ -2226,7 +2226,6 @@ GameObject:
   - component: {fileID: 1991405356}
   - component: {fileID: 1991405355}
   - component: {fileID: 1991405361}
-  - component: {fileID: 1991405359}
   - component: {fileID: 1991405358}
   - component: {fileID: 1991405360}
   - component: {fileID: 1991405364}
@@ -2358,26 +2357,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!111 &1991405359
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991405353}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: 56f1e817d1f455d40af4034da41914bb, type: 2}
-  - {fileID: 7400000, guid: af80b11d31fc9da4b80ef7ceb99b6e60, type: 2}
-  - {fileID: 7400000, guid: 95c4a10de39f7054199178b9275e6bed, type: 2}
-  - {fileID: 7400000, guid: 6f9b8e1b52f68e64ea7e38188f5bf86f, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!114 &1991405360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2471,8 +2450,8 @@ MonoBehaviour:
   currentParryCount: 0
   reinforceReady: 0
   reinforceDamage: 10
-  animator: {fileID: 0}
-  reinforceAttackTrigger: ReinforceAttack
+  animator: {fileID: 1991405358}
+  reinforceAttackTrigger: uniqueAttack
   OnReinforceAttack:
     m_PersistentCalls:
       m_Calls: []
@@ -2493,7 +2472,7 @@ MonoBehaviour:
   code: {fileID: 1991405362}
   guardKey: 113
   guardDamageMultiplier: 0.5
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 1991405356}
 --- !u!114 &1991405364
 MonoBehaviour:
   m_ObjectHideFlags: 0
