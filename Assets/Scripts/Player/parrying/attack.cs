@@ -16,12 +16,14 @@ public class PlayerAttack : MonoBehaviour
     public KeyCode attackKey = KeyCode.E;
     public float comboBuffer = 0.2f;
 
+
     
 
     [Header("��Ÿ��")]
-    [SerializeField] private float attackCooldown = 4f;
+    [SerializeField] private float attackCooldown = 1f;
 
     private bool canAttack = true;
+    private bool inrange;
     private Coroutine cooldownCo;
 
     private AttackStep step = new AttackStep(); // �⺻ damage=2 

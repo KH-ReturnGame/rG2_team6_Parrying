@@ -10,6 +10,7 @@ public class ParrySystem : MonoBehaviour
     private float parryWindowTimer = 0f;
 
     public PlayerReinforceAttack code;
+    public Animator animator;
 
     //가드(데미지 감소) 설정 
     [Header("Guard (Q)")]
@@ -67,6 +68,7 @@ public class ParrySystem : MonoBehaviour
 
     private void StartParryWindow()
     {
+        animator.SetTrigger("parrying");
         parryWindowActive = true;
         parryWindowTimer = parryWindowDuration;
         Debug.Log("Parry Window Opened!");
@@ -121,6 +123,7 @@ public class ParrySystem : MonoBehaviour
             GameManager.Instance.playerHP--;
             cooldownTimer = parryCooldown;
         }
+        animator.SetTrigger("endparrying");
     }
 
     private bool IsAttackFromFront(Vector2 attackerPos)
