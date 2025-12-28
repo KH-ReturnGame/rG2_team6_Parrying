@@ -2116,7 +2116,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828fd7d9a9483de48abd335f7b432593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 1973839123}
+  startSceneName: GameScene
+  deathSceneNames:
+  - PlayerDead
+  - BossDead
 --- !u!4 &1940835016
 Transform:
   m_ObjectHideFlags: 0
@@ -2145,7 +2148,7 @@ GameObject:
   - component: {fileID: 1973839123}
   m_Layer: 5
   m_Name: Timer
-  m_TagString: Untagged
+  m_TagString: TimerText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
