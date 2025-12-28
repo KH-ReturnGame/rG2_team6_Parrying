@@ -205,8 +205,8 @@ GameObject:
   - component: {fileID: 230065329}
   - component: {fileID: 230065328}
   - component: {fileID: 230065330}
-  - component: {fileID: 230065331}
   - component: {fileID: 230065332}
+  - component: {fileID: 230065333}
   m_Layer: 0
   m_Name: boss_0001_0
   m_TagString: Untagged
@@ -257,7 +257,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7473321844736632140, guid: 7724afe6d2b846e40acf65ff5d6bfb5c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -301,7 +301,25 @@ Animation:
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
---- !u!95 &230065331
+--- !u!114 &230065332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230065327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20d37d375f0b7f94a9ffe6ba67379470, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tentacle: {fileID: 8842658588646160858, guid: 1a7920170b6b87e4d92a5e392f3b0f37, type: 3}
+  verticle_tentacle: {fileID: 6301519767057180010, guid: c591fbe006c53b54f925889c789899f4, type: 3}
+  Egg: {fileID: 1794708268047322259, guid: d6932d691b2bfc54ab5affff7194b14c, type: 3}
+  All_attack: {fileID: 1420143920}
+  Ready_motion: {fileID: 419944738}
+  bossHPUI: {fileID: 1762055512}
+--- !u!95 &230065333
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -323,24 +341,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &230065332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 230065327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20d37d375f0b7f94a9ffe6ba67379470, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tentacle: {fileID: 8842658588646160858, guid: 1a7920170b6b87e4d92a5e392f3b0f37, type: 3}
-  verticle_tentacle: {fileID: 6301519767057180010, guid: c591fbe006c53b54f925889c789899f4, type: 3}
-  Egg: {fileID: 1794708268047322259, guid: d6932d691b2bfc54ab5affff7194b14c, type: 3}
-  All_attack: {fileID: 1420143920}
-  Ready_motion: {fileID: 419944738}
-  bossHPUI: {fileID: 1762055512}
 --- !u!1 &307352608
 GameObject:
   m_ObjectHideFlags: 0
