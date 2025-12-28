@@ -93,12 +93,14 @@ public class PlayerReinforceAttack : MonoBehaviour
 
         if (animator != null && !string.IsNullOrEmpty(reinforceAttackTrigger))
             animator.SetTrigger(reinforceAttackTrigger);
+            GameManager.Instance.playerMove = false;
 
         OnReinforceAttack?.Invoke(reinforceDamage);
         
         // 사용 후 상태 초기화(다음 강회공격을 다시 모으게 함)
         ResetReinforceState();
 
+        GameManager.Instance.playerMove = true;
         return true;
     }
 

@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float attackCooldown = 1f;
 
     private bool canAttack = true;
-    private bool inrange;
+    public bool inrange = false;
     private Coroutine cooldownCo;
 
     private AttackStep step = new AttackStep(); // �⺻ damage=2 
@@ -32,16 +32,29 @@ public class PlayerAttack : MonoBehaviour
     public Animator animator;
     private void Update()
     {
-        if (Input.GetKeyDown(attackKey) && canAttack)
+        if (Input.GetKeyDown(attackKey) && canAttack && inrange)
         {
             Debug.Log($"Attack Damage = {step.damage}");
 
             canAttack = false;
+            GameManager.Instance.playerMove = false;
 
             if (cooldownCo != null) StopCoroutine(cooldownCo);
             cooldownCo = StartCoroutine(AttackCooldownRoutine());
             animator.SetTrigger("normalAttack");
             GameManager.Instance.bossHP -= step.damage;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other){
+        if(other.gameObject.CompareTag("Range")){
+            inrange = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other){
+        if(other.gameObject.CompareTag("Range")){
+            inrange = false;
         }
     }
 
@@ -51,5 +64,6 @@ public class PlayerAttack : MonoBehaviour
 
         canAttack = true;
         cooldownCo = null;
+        GameManager.Instance.playerMove = true;
     }
 }

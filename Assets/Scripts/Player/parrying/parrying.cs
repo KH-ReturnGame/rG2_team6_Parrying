@@ -69,6 +69,7 @@ public class ParrySystem : MonoBehaviour
     private void StartParryWindow()
     {
         animator.SetTrigger("parrying");
+        GameManager.Instance.playerMove = false;
         parryWindowActive = true;
         parryWindowTimer = parryWindowDuration;
         Debug.Log("Parry Window Opened!");
@@ -124,6 +125,7 @@ public class ParrySystem : MonoBehaviour
             cooldownTimer = parryCooldown;
         }
         animator.SetTrigger("endparrying");
+        GameManager.Instance.playerMove = true;
     }
 
     private bool IsAttackFromFront(Vector2 attackerPos)
