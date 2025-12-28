@@ -1210,8 +1210,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frontSlider: {fileID: 851777098}
   backSlider: {fileID: 1897987919}
+  frontFill: {fileID: 0}
+  backFill: {fileID: 0}
+  highColor: {r: 0, g: 1, b: 0, a: 1}
+  midColor: {r: 1, g: 0.85, b: 0, a: 1}
+  lowColor: {r: 1, g: 0, b: 0, a: 1}
+  enableBlink: 1
+  blinkStartRatio: 0.3
+  blinkSpeed: 6
+  blinkMinAlpha: 0.35
   backDelay: 0.3
   backSmoothTime: 0.5
+  enableSuccessFlash: 0
+  successColor: {r: 0.3, g: 1, b: 1, a: 1}
+  successFlashTime: 0.25
+  enableReadyFx: 0
+  readyColor: {r: 0.2, g: 1, b: 0.6, a: 1}
+  readyFxTime: 0.25
 --- !u!1 &1247594630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,7 +1661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1420143921
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1654,7 +1669,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420143920}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -1930,8 +1945,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frontSlider: {fileID: 1054618292}
   backSlider: {fileID: 1827106116}
+  frontFill: {fileID: 0}
+  backFill: {fileID: 0}
+  highColor: {r: 0, g: 1, b: 0, a: 1}
+  midColor: {r: 1, g: 0.85, b: 0, a: 1}
+  lowColor: {r: 1, g: 0, b: 0, a: 1}
+  enableBlink: 1
+  blinkStartRatio: 0.3
+  blinkSpeed: 6
+  blinkMinAlpha: 0.35
   backDelay: 0.15
   backSmoothTime: 0.25
+  enableSuccessFlash: 0
+  successColor: {r: 0.3, g: 1, b: 1, a: 1}
+  successFlashTime: 0.25
+  enableReadyFx: 0
+  readyColor: {r: 0.2, g: 1, b: 0.6, a: 1}
+  readyFxTime: 0.25
 --- !u!1 &1786991766
 GameObject:
   m_ObjectHideFlags: 0
@@ -2629,6 +2659,7 @@ MonoBehaviour:
   OnReinforceAttack:
     m_PersistentCalls:
       m_Calls: []
+  particle: {fileID: 5880630383590903539, guid: 534397fabda27be45bc69c42effb7357, type: 3}
   accumulatedBlockedAttackPower: 0
   hasParriedAtLeastOnce: 0
 --- !u!114 &1991405363
