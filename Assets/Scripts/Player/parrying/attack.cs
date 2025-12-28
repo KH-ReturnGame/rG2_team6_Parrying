@@ -16,6 +16,8 @@ public class PlayerAttack : MonoBehaviour
     public KeyCode attackKey = KeyCode.E;
     public float comboBuffer = 0.2f;
 
+    
+
     [Header("��Ÿ��")]
     [SerializeField] private float attackCooldown = 4f;
 
@@ -23,6 +25,9 @@ public class PlayerAttack : MonoBehaviour
     private Coroutine cooldownCo;
 
     private AttackStep step = new AttackStep(); // �⺻ damage=2 
+
+    public SpriteRenderer sprite;
+    public Animator animator;
     private void Update()
     {
         if (Input.GetKeyDown(attackKey) && canAttack)
@@ -33,7 +38,8 @@ public class PlayerAttack : MonoBehaviour
 
             if (cooldownCo != null) StopCoroutine(cooldownCo);
             cooldownCo = StartCoroutine(AttackCooldownRoutine());
-            GameManager.Instance.bossHP -= 2;
+            animator.SetTrigger("normalAttack");
+            GameManager.Instance.bossHP -= step.damage;
         }
     }
 

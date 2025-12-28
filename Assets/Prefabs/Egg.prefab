@@ -179,5 +179,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5b6fe80d9510e4b8be2487b6b4cb9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBeParried: 0
+  canBeParried: 1
   damage: 0
