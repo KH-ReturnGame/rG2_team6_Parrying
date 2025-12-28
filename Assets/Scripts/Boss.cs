@@ -136,15 +136,7 @@ public class Boss : MonoBehaviour
             {
                 Vector2 attackPos = GameManager.Instance.player.transform.position + new Vector3(0, -2, 0);
 
-                // 촉수 히트박스 기준 크기 얻기
-                Collider2D col = verticle_tentacle.GetComponent<Collider2D>();
-                Vector2 size = col.bounds.size;
-
-                // 위험 표시
-                yield return StartCoroutine(
-                    ShowDangerRect(attackPos, size, 1f)
-                );
-
+                
                 // 실제 공격
                 vertical_tentacle_skill(2f);
                 break;
@@ -266,20 +258,71 @@ IEnumerator All_attack_on()
     }
 [SerializeField] private GameObject dangerRectPrefab;
 
-IEnumerator ShowDangerRect(Vector2 pos, Vector2 size, float duration)
+IEnumerator ShowDangerRect(Vector2 pos, Vector2 worldSize, float duration)
 {
     GameObject danger = Instantiate(dangerRectPrefab, pos, Quaternion.identity);
-    danger.transform.localScale = size;
+
+    // ✅ bounds가 0으로 잡히는 경우 방지: 1프레임 대기
+    yield return null;
+
+    var sr = danger.GetComponent<SpriteRenderer>();
+    if (sr != null)
+    {
+        // ✅ 스프라이트 월드 크기(0 방지)
+        Vector2 spriteSize = sr.bounds.size;
+
+        // bounds가 0이면 (Sprite 미할당/비활성/정렬 문제 등)
+        if (spriteSize.x <= 0.0001f || spriteSize.y <= 0.0001f)
+        {
+            // 안전값: 그냥 worldSize를 localScale로 쓰지 말고 적당히 키우기
+            danger.transform.localScale = new Vector3(
+                Mathf.Max(worldSize.x, 1f),
+                Mathf.Max(worldSize.y, 1f),
+                1f
+            );
+        }
+        else
+        {
+            Vector2 scale = new Vector2(
+                worldSize.x / spriteSize.x,
+                worldSize.y / spriteSize.y
+            );
+
+            // ✅ 0 스케일 방지(최소값)
+            scale.x = Mathf.Max(scale.x, 0.01f);
+            scale.y = Mathf.Max(scale.y, 0.01f);
+
+            danger.transform.localScale = new Vector3(scale.x, scale.y, 1f);
+        }
+
+        // ✅ 항상 위에 보이게
+        sr.sortingOrder = 100;
+    }
 
     yield return new WaitForSeconds(duration);
-
     Destroy(danger);
 }
+
+
 
 Vector2 GetColliderSize(GameObject prefabOrObj)
 {
     var col = prefabOrObj.GetComponentInChildren<Collider2D>(true);
     return col != null ? (Vector2)col.bounds.size : Vector2.one;
+}
+
+Vector2 GetPrefabColliderSizeSafe(GameObject prefab)
+{
+    var temp = Instantiate(prefab, new Vector3(9999, 9999, 0), Quaternion.identity);
+
+    // 1프레임 기다리지 않아도 되는 경우가 대부분이지만
+    // 안정성을 원하면 코루틴으로 분리 가능
+    var col = temp.GetComponentInChildren<Collider2D>();
+
+    Vector2 size = col != null ? (Vector2)col.bounds.size : Vector2.one;
+
+    Destroy(temp);
+    return size;
 }
 
 
