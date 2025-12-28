@@ -2488,6 +2488,8 @@ MonoBehaviour:
   attackKey: 101
   comboBuffer: 0.2
   attackCooldown: 4
+  sprite: {fileID: 1991405356}
+  animator: {fileID: 1991405358}
 --- !u!1 &2033454178
 GameObject:
   m_ObjectHideFlags: 0
