@@ -8,22 +8,23 @@ public class Egg : MonoBehaviour
     void Start(){
         rigid = GetComponent<Rigidbody2D>();
         dir = (GameManager.Instance.player.transform.position - transform.position).normalized;
+        
                             
     }
+
     
     
 
     void FixedUpdate(){
         Debug.Log(dir.normalized);
-        transform.Translate(dir * 10 * Time.deltaTime);
+        rigid.linearVelocity = dir * 10f;
         
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            Destroy(gameObject); //1
+    void OnCollisionEnter2D(Collision2D coll){
+        if(coll.gameObject.CompareTag("Player")){
+            GameManager.Instance.playerHP -= 2f;
+            Destroy(gameObject);
         }
     }
 }

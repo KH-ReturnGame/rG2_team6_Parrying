@@ -89,7 +89,7 @@ public class ParrySystem : MonoBehaviour
             }
             else
             {
-                EndParryWindow(false);
+                EndParryWindow(false, attack);
             }
             return;
         }
@@ -115,13 +115,14 @@ public class ParrySystem : MonoBehaviour
             var enemyAttack = attack != null ? attack.GetComponent<EnemyAttack>() : null;
             enemyAttack?.CancelAttack();
 
-            if (code != null) code.RegisterParrySuccess();
+            if (code != null) code.RegisterParrySuccess(enemyAttack.damage);
         }
         else
         {
+            var enemyAttack = attack != null ? attack.GetComponent<EnemyAttack>() : null;
             Debug.Log("Parry Failed! Cooldown for 5s.");
             canParry = false;
-            GameManager.Instance.playerHP--;
+            //GameManager.Instance.playerHP --;
             cooldownTimer = parryCooldown;
         }
         animator.SetTrigger("endparrying");
