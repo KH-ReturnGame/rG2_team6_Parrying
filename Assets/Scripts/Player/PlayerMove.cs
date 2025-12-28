@@ -31,13 +31,16 @@ public class PlayerMove : MonoBehaviour
         if(GameManager.Instance.playerMove){
             move();
         }
+        else{
+            rigid.linearVelocityX = 0;
+        }
         
         
         
     }
 
     void move(){
-        rigid.linearVelocityX = Input.GetAxis("Horizontal") * 10;
+        rigid.linearVelocityX = Input.GetAxisRaw("Horizontal") * 10;
         if(Input.GetKey(KeyCode.RightArrow)){
             sprite.flipX = false;
             animator.SetBool("isWalking", true);
